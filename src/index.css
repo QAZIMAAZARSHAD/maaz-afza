@@ -1,0 +1,172 @@
+:root {
+  --gold: #e8d5a3;
+  --gold-bright: #f4e7c2;
+  --gold-deep: #c9a45a;
+  --burgundy: #5a1620;
+  --burgundy-deep: #3d0e15;
+  --burgundy-glow: #7a2430;
+  --cream: #f6ead2;
+  --ink: #070403;
+  --ink-soft: #12090a;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+html {
+  background: var(--ink);
+}
+
+body {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  color: var(--cream);
+  background: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+.app-shell {
+  height: 100%;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  background: var(--ink);
+  position: relative;
+  overflow: hidden;
+}
+
+.app-shell__ambient {
+  position: absolute;
+  inset: -8%;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(90, 22, 32, 0.35), transparent 55%),
+    url('/images/Page%201.png') center / cover no-repeat;
+  filter: blur(42px) saturate(0.7) brightness(0.28);
+  transform: scale(1.12);
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+
+.app-shell[data-page='cover'] .app-shell__ambient {
+  background-image:
+    radial-gradient(ellipse at 50% 30%, rgba(90, 22, 32, 0.35), transparent 55%),
+    url('/images/Page%202.png');
+}
+
+.app-shell[data-page='invitation'] .app-shell__ambient {
+  background-image:
+    radial-gradient(ellipse at 50% 30%, rgba(90, 22, 32, 0.35), transparent 55%),
+    url('/images/Page%203%20V1.png');
+}
+
+.app-shell[data-page='manjha'] .app-shell__ambient {
+  background-image:
+    radial-gradient(ellipse at 50% 30%, rgba(120, 80, 20, 0.28), transparent 55%),
+    url('/images/Page%204%20V1.png');
+}
+
+.app-shell[data-page='ceremony'] .app-shell__ambient {
+  background-image:
+    radial-gradient(ellipse at 50% 30%, rgba(120, 80, 20, 0.28), transparent 55%),
+    url('/images/Page%205%20V1.png');
+}
+
+.app-shell[data-page='wedding'] .app-shell__ambient {
+  background-image:
+    radial-gradient(ellipse at 50% 30%, rgba(40, 16, 24, 0.4), transparent 55%),
+    url('/images/Page%207%20V1.png');
+}
+
+.app-shell[data-page='details'] .app-shell__ambient {
+  background-image:
+    radial-gradient(ellipse at 50% 30%, rgba(120, 80, 20, 0.28), transparent 55%),
+    url('/images/Page%206%20V1.png');
+}
+
+.phone-stage {
+  position: relative;
+  width: min(100vw, 28rem, calc(100dvh * 941 / 1672));
+  height: min(100dvh, 100svh, calc(min(100vw, 28rem) * 1672 / 941));
+  overflow: hidden;
+  background: #000;
+  isolation: isolate;
+}
+
+.app-shell[data-page='invitation'] .phone-stage,
+.app-shell[data-page='manjha'] .phone-stage,
+.app-shell[data-page='ceremony'] .phone-stage,
+.app-shell[data-page='wedding'] .phone-stage {
+  width: min(100vw, 28rem, calc(100dvh * 956 / 1645));
+  height: min(100dvh, 100svh, calc(min(100vw, 28rem) * 1645 / 956));
+}
+
+.app-shell[data-page='details'] .phone-stage {
+  width: min(100vw, 28rem, calc(100dvh * 957 / 1644));
+  height: min(100dvh, 100svh, calc(min(100vw, 28rem) * 1644 / 957));
+}
+
+@media (min-width: 500px) {
+  .phone-stage {
+    border-radius: 28px;
+    box-shadow:
+      0 0 0 1px rgba(232, 213, 163, 0.16),
+      0 28px 80px rgba(0, 0, 0, 0.65),
+      0 0 120px rgba(201, 164, 90, 0.08);
+  }
+}
+
+.pending-page {
+  height: 100%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 32px;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(90, 22, 32, 0.35), transparent 55%),
+    #070403;
+}
+
+.pending-page h1 {
+  font-family: 'Bodoni Moda', serif;
+  font-weight: 500;
+  font-size: 32px;
+  color: var(--gold);
+  margin: 8px 0 12px;
+}
+
+.pending-page__kicker,
+.pending-page p {
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-size: 10px;
+  color: rgba(232, 213, 163, 0.7);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

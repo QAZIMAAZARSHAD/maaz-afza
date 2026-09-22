@@ -1,0 +1,270 @@
+.ceremony {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  container-type: inline-size;
+  touch-action: pan-y;
+  color: #5c3d10;
+}
+
+.ceremony::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #070403;
+  z-index: 6;
+  pointer-events: none;
+  opacity: 1;
+}
+
+.ceremony.is-ready::after {
+  animation: ceremony-reveal 0.85s ease forwards;
+}
+
+.ceremony__bg {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.ceremony__layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0;
+}
+
+.ceremony.is-ready .ceremony__layer {
+  animation: ceremony-in 0.9s ease 0.15s both;
+}
+
+.ceremony__kicker,
+.ceremony__title,
+.ceremony__of,
+.ceremony__name,
+.ceremony__rule,
+.ceremony__body,
+.ceremony__when {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.ceremony__kicker {
+  top: 20.4%;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(13px, 3.15cqi, 16px);
+  letter-spacing: 0.01em;
+  color: #6a4a16;
+  white-space: nowrap;
+}
+
+.ceremony__title,
+.ceremony__name {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(28px, 7.35cqi, 40px);
+  line-height: 0.9;
+  color: #704200;
+  white-space: nowrap;
+}
+
+.ceremony__title {
+  top: 26.6%;
+}
+
+.ceremony__of {
+  top: 32.8%;
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(26px, 7.2cqi, 38px);
+  line-height: 1;
+  color: #6a4a16;
+}
+
+.ceremony__name {
+  top: 38.8%;
+}
+
+.ceremony__rule {
+  width: 34%;
+  display: flex;
+  align-items: center;
+  gap: 1.15cqi;
+  color: #6a4a16;
+}
+
+.ceremony__rule i {
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+}
+
+.ceremony__rule svg {
+  width: 1.9cqi;
+  height: 1.9cqi;
+  flex: none;
+}
+
+.ceremony__rule--mid {
+  top: 43.6%;
+}
+
+.ceremony__rule--date {
+  top: 53.4%;
+  width: 22%;
+}
+
+.ceremony__body {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  color: #5c3d10;
+}
+
+.ceremony__body {
+  top: 48.4%;
+  width: 78%;
+  font-size: clamp(14px, 3.7cqi, 19px);
+  line-height: 1.55;
+}
+
+.ceremony__when {
+  top: 58%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85cqi;
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  color: #5c3d10;
+  text-transform: uppercase;
+}
+
+.ceremony__day {
+  font-size: clamp(9px, 2.2cqi, 12px);
+  letter-spacing: 0.36em;
+  padding-left: 0.36em;
+}
+
+.ceremony__date {
+  font-size: clamp(13px, 3.15cqi, 17px);
+  letter-spacing: 0.2em;
+  padding-left: 0.2em;
+}
+
+.ceremony__scroll {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  bottom: max(8px, calc(env(safe-area-inset-bottom) + 6px));
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  border: 0;
+  background: transparent;
+  padding: 6px 14px;
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: #fff6df;
+  text-shadow:
+    0 1px 2px rgba(40, 16, 6, 0.9),
+    0 0 8px rgba(40, 16, 6, 0.65);
+  cursor: pointer;
+  opacity: 0;
+}
+
+.ceremony.is-ready .ceremony__scroll {
+  animation: ceremony-scroll-in 1s ease 0.7s both;
+}
+
+.ceremony__scroll i {
+  width: 1px;
+  height: 18px;
+  background: linear-gradient(to bottom, #fff6df, rgba(255, 246, 223, 0.15));
+  position: relative;
+}
+
+.ceremony__scroll i::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -2px;
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid #fff6df;
+  border-bottom: 1.5px solid #fff6df;
+  transform: translateX(-50%) rotate(45deg);
+  animation: ceremony-bob 1.8s ease-in-out infinite;
+}
+
+.ceremony.is-leaving .ceremony__scroll {
+  animation: ceremony-fade 0.7s ease forwards;
+}
+
+.ceremony__grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+}
+
+.ceremony.is-leaving .ceremony__layer {
+  animation: ceremony-fade 0.7s ease forwards;
+}
+
+.ceremony.is-leaving::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #070403;
+  opacity: 0;
+  animation: ceremony-curtain 1.05s ease forwards;
+  z-index: 7;
+  pointer-events: none;
+}
+
+@keyframes ceremony-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes ceremony-fade {
+  to { opacity: 0; }
+}
+
+@keyframes ceremony-reveal {
+  to { opacity: 0; }
+}
+
+@keyframes ceremony-curtain {
+  to { opacity: 1; }
+}
+
+@keyframes ceremony-scroll-in {
+  from { opacity: 0; transform: translate(-50%, 8px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+@keyframes ceremony-bob {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0) rotate(45deg);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translateX(-50%) translateY(4px) rotate(45deg);
+    opacity: 1;
+  }
+}

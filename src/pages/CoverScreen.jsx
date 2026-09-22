@@ -1,0 +1,108 @@
+import { useEffect, useRef, useState } from 'react'
+import GoldDust from '../components/GoldDust.jsx'
+import './CoverScreen.css'
+
+const BG_SRC = `/images/${encodeURIComponent('Page 2.png')}`
+
+export default function CoverScreen({ onOpen, onBack }) {
+  const [ready, setReady] = useState(false)
+  const [leaving, setLeaving] = useState(false)
+  const leavingRef = useRef(false)
+  const sectionRef = useRef(null)
+  const touchY = useRef(0)
+
+  useEffect(() => {
+    const img = new Image()
+    img.src = BG_SRC
+    const markReady = () => setReady(true)
+    if (img.complete) markReady()
+    else img.onload = markReady
+  }, [])
+
+  function leaveTo(next) {
+    if (leavingRef.current) return
+    leavingRef.current = true
+    setLeaving(true)
+    window.setTimeout(() => next?.(), 1100)
+  }
+
+  function handleOpen() {
+    leaveTo(onOpen)
+  }
+
+  function handleBack() {
+    leaveTo(onBack)
+  }
+
+  useEffect(() => {
+    if (!ready) return undefined
+    const node = sectionRef.current
+    if (!node) return undefined
+
+    const onWheel = (event) => {
+      if (event.deltaY > 18) handleOpen()
+      else if (event.deltaY < -18) handleBack()
+    }
+    const onTouchStart = (event) => {
+      touchY.current = event.touches[0].clientY
+    }
+    const onTouchEnd = (event) => {
+      const dy = touchY.current - event.changedTouches[0].clientY
+      if (dy > 36) handleOpen()
+      else if (dy < -36) handleBack()
+    }
+    const onKey = (event) => {
+      if (['ArrowDown', 'PageDown', ' ', 'Enter'].includes(event.key)) {
+        event.preventDefault()
+        handleOpen()
+      } else if (['ArrowUp', 'PageUp'].includes(event.key)) {
+        event.preventDefault()
+        handleBack()
+      }
+    }
+
+    node.addEventListener('wheel', onWheel, { passive: true })
+    node.addEventListener('touchstart', onTouchStart, { passive: true })
+    node.addEventListener('touchend', onTouchEnd, { passive: true })
+    window.addEventListener('keydown', onKey)
+
+    return () => {
+      node.removeEventListener('wheel', onWheel)
+      node.removeEventListener('touchstart', onTouchStart)
+      node.removeEventListener('touchend', onTouchEnd)
+      window.removeEventListener('keydown', onKey)
+    }
+  }, [ready])
+
+  return (
+    <section
+      ref={sectionRef}
+      className={`cover${ready ? ' is-ready' : ''}${leaving ? ' is-leaving' : ''}`}
+    >
+      <div className="cover__stage">
+        <div className="cover__bg" style={{ backgroundImage: `url("${BG_SRC}")` }} />
+
+        <p className="cover__kicker">The wedding of</p>
+
+        <div className="cover__names">
+          <h1>
+            <span className="cover__groom">Qazi Maaz Arshad</span>
+            <span className="cover__amp" aria-hidden="true">&</span>
+            <span className="cover__bride">Afza Aslam</span>
+          </h1>
+        </div>
+      </div>
+
+      <div className="cover__wash" />
+      <div className="cover__glow cover__glow--left" />
+      <div className="cover__glow cover__glow--right" />
+      <GoldDust />
+      <div className="cover__grain" />
+
+      <button className="cover__scroll" type="button" onClick={handleOpen}>
+        <span>Scroll</span>
+        <i />
+      </button>
+    </section>
+  )
+}

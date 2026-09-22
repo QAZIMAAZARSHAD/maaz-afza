@@ -1,0 +1,227 @@
+.manjha {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  container-type: inline-size;
+  touch-action: pan-y;
+  color: #5c3d10;
+}
+
+.manjha::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #070403;
+  z-index: 6;
+  pointer-events: none;
+  opacity: 1;
+}
+
+.manjha.is-ready::after {
+  animation: manjha-reveal 0.85s ease forwards;
+}
+
+.manjha__bg {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.manjha__layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0;
+}
+
+.manjha.is-ready .manjha__layer {
+  animation: manjha-in 0.9s ease 0.15s both;
+}
+
+.manjha__crest,
+.manjha__rule,
+.manjha__chapter,
+.manjha__title,
+.manjha__date,
+.manjha__next,
+.manjha__knot,
+.manjha__footer {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.manjha__crest {
+  top: 18.5%;
+  width: 11.5cqi;
+  height: auto;
+  color: #6a4a16;
+}
+
+.manjha__rule {
+  width: 28%;
+  display: flex;
+  align-items: center;
+  gap: 1.15cqi;
+  color: #6a4a16;
+}
+
+.manjha__rule i {
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+}
+
+.manjha__rule svg {
+  width: 2.15cqi;
+  height: 2.15cqi;
+  flex: none;
+}
+
+.manjha__rule--above {
+  top: 24.71%;
+}
+
+.manjha__rule--below {
+  top: 30.66%;
+}
+
+.manjha__rule--title {
+  top: 44.68%;
+}
+
+.manjha__chapter,
+.manjha__date,
+.manjha__footer {
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 1;
+  color: #5c3d10;
+}
+
+.manjha__chapter {
+  top: 27.78%;
+  font-size: clamp(9px, 2.45cqi, 12px);
+  letter-spacing: 0.36em;
+  padding-left: 0.36em;
+}
+
+.manjha__title {
+  top: 37.7%;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(46px, 13.1cqi, 66px);
+  line-height: 0.85;
+  letter-spacing: 0.01em;
+  color: #704200;
+  white-space: nowrap;
+}
+
+.manjha__date {
+  top: 47.12%;
+  font-size: clamp(9px, 2.35cqi, 11.5px);
+  letter-spacing: 0.32em;
+  padding-left: 0.32em;
+}
+
+.manjha__next {
+  top: 52.74%;
+  width: 8.24cqi;
+  height: 8.24cqi;
+  border: 0;
+  border-radius: 50%;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  background: #915d11;
+  color: #f6ead2;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(80, 42, 6, 0.22);
+}
+
+.manjha__next svg {
+  width: 46%;
+  height: 46%;
+}
+
+.manjha__next:hover {
+  background: #7d5010;
+}
+
+.manjha__knot {
+  width: 3.4cqi;
+  height: 3.4cqi;
+  color: #6a4a16;
+}
+
+.manjha__knot--above {
+  top: 83.2%;
+}
+
+.manjha__knot--below {
+  top: 93.75%;
+}
+
+.manjha__footer {
+  top: 89.6%;
+  font-size: clamp(8.5px, 2.15cqi, 11px);
+  letter-spacing: 0.24em;
+  padding-left: 0.24em;
+  line-height: 1.62;
+  text-align: center;
+}
+
+.manjha__grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+}
+
+.manjha.is-leaving .manjha__layer {
+  animation: manjha-fade 0.7s ease forwards;
+}
+
+.manjha.is-leaving::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #070403;
+  opacity: 0;
+  animation: manjha-curtain 1.05s ease forwards;
+  z-index: 7;
+  pointer-events: none;
+}
+
+@keyframes manjha-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes manjha-fade {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes manjha-reveal {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes manjha-curtain {
+  to {
+    opacity: 1;
+  }
+}

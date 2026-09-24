@@ -35,7 +35,7 @@
   position: absolute;
   inset: 0;
   background-position: center;
-  background-size: cover;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   opacity: 0;
 }
@@ -114,62 +114,65 @@
 .cover__kicker {
   position: absolute;
   z-index: 2;
-  top: 22.8%;
-  left: 14%;
-  right: 14%;
+  top: 22.4%;
+  left: 8%;
+  right: 8%;
   margin: 0;
   text-align: center;
   font-family: 'Cinzel', serif;
-  font-size: clamp(8px, 2.15cqi, 10px);
+  font-size: clamp(9px, 2.2cqi, 12px);
   font-weight: 500;
-  letter-spacing: 0.42em;
+  letter-spacing: 0.38em;
+  padding-left: 0.38em;
   text-transform: uppercase;
-  color: #8a6a32;
+  color: #6e5c46;
   pointer-events: none;
   opacity: 0;
 }
 
 .cover.is-ready .cover__kicker {
-  animation: name-in 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.28s both;
+  animation: kicker-in 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.28s both;
 }
 
 .cover__names {
   position: absolute;
   z-index: 2;
-  top: 32.2%;
-  height: 15%;
-  left: 14%;
-  right: 14%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  inset: 0;
   pointer-events: none;
 }
 
 .cover__names h1 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+  margin: 0;
+}
+
+.cover__groom,
+.cover__bride,
+.cover__amp {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  white-space: nowrap;
 }
 
 .cover__groom,
 .cover__bride {
   display: block;
-  width: 100%;
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-style: italic;
   font-weight: 500;
-  font-size: clamp(24px, 7cqi, 32px);
-  letter-spacing: 0.07em;
-  line-height: 1.1;
-  color: #4f121c;
-  white-space: nowrap;
-  padding-left: 0.12em;
-  text-shadow: 0 1px 10px rgba(255, 236, 205, 0.45);
+  font-size: clamp(28px, 7.4cqi, 40px);
+  line-height: 1;
+  color: #5c1a22;
   opacity: 0;
+}
+
+.cover__groom {
+  top: 32.15%;
+}
+
+.cover__bride {
+  top: 45.6%;
 }
 
 .cover.is-ready .cover__groom {
@@ -181,13 +184,12 @@
 }
 
 .cover__amp {
+  top: 38.85%;
   display: block;
   font-family: 'Great Vibes', cursive;
-  font-size: clamp(24px, 6.8cqi, 32px);
-  line-height: 0.85;
-  color: #9a7436;
-  margin: 0.06em 0 0.04em;
-  text-shadow: 0 0 16px rgba(154, 116, 54, 0.28);
+  font-size: clamp(28px, 7.2cqi, 38px);
+  line-height: 1;
+  color: #8a6230;
   opacity: 0;
 }
 
@@ -276,7 +278,7 @@
   }
 }
 
-@keyframes name-in {
+@keyframes kicker-in {
   from {
     opacity: 0;
     transform: translateY(14px);
@@ -289,15 +291,28 @@
   }
 }
 
-@keyframes amp-in {
+@keyframes name-in {
   from {
     opacity: 0;
-    transform: scale(0.72);
+    transform: translate(-50%, calc(-50% + 14px));
     filter: blur(6px);
   }
   to {
     opacity: 1;
-    transform: scale(1);
+    transform: translate(-50%, -50%);
+    filter: none;
+  }
+}
+
+@keyframes amp-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.72);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
     filter: none;
   }
 }
@@ -385,9 +400,6 @@
 
   .cover.is-ready::after,
   .cover.is-ready .cover__kicker,
-  .cover.is-ready .cover__groom,
-  .cover.is-ready .cover__amp,
-  .cover.is-ready .cover__bride,
   .cover.is-ready .cover__scroll,
   .cover.is-ready .gold-dust {
     opacity: 1;
@@ -395,6 +407,15 @@
     filter: none;
     transform: none;
     letter-spacing: inherit;
+  }
+
+  .cover.is-ready .cover__groom,
+  .cover.is-ready .cover__amp,
+  .cover.is-ready .cover__bride {
+    opacity: 1;
+    animation: none;
+    filter: none;
+    transform: translate(-50%, -50%);
   }
 
   .cover.is-ready .cover__scroll {

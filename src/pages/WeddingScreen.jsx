@@ -83,8 +83,8 @@ export default function WeddingScreen({ onContinue, onBack }) {
       <div className="wedding__layer">
         <p className="wedding__chapter">Chapter II</p>
         <h1 className="wedding__title">
-          <span>A Union</span>
-          <span>in Faith</span>
+          <span>Jashn-E</span>
+          <span>Nikah</span>
         </h1>
         <p className="wedding__kicker">The wedding</p>
         <p className="wedding__date">28 Jan 2027</p>

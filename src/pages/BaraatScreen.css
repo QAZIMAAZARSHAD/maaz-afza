@@ -1,0 +1,206 @@
+.baraat {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  container-type: inline-size;
+  touch-action: pan-y;
+  color: #f4ead6;
+}
+
+.baraat::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #070403;
+  z-index: 6;
+  pointer-events: none;
+  opacity: 1;
+}
+
+.baraat.is-ready::after {
+  animation: baraat-reveal 0.85s ease forwards;
+}
+
+.baraat__bg {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.baraat__layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0;
+}
+
+.baraat.is-ready .baraat__layer {
+  animation: baraat-in 0.9s ease 0.15s both;
+}
+
+.baraat__invite,
+.baraat__of,
+.baraat__name,
+.baraat__date {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.baraat__invite,
+.baraat__date {
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #f4ead6;
+}
+
+.baraat__invite {
+  top: 33.4%;
+  font-size: clamp(10px, 2.45cqi, 13px);
+  letter-spacing: 0.34em;
+  padding-left: 0.34em;
+  line-height: 1.85;
+}
+
+.baraat__of {
+  top: 43.2%;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(26px, 6.6cqi, 36px);
+  line-height: 1;
+  color: #f7f0e2;
+}
+
+.baraat__name {
+  top: 49.4%;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(32px, 8.4cqi, 46px);
+  line-height: 0.95;
+  color: #f7f0e2;
+}
+
+.baraat__date {
+  top: 60.4%;
+  font-size: clamp(12px, 2.85cqi, 15px);
+  letter-spacing: 0.36em;
+  padding-left: 0.36em;
+  font-variant-numeric: lining-nums;
+  font-feature-settings: 'lnum' 1;
+}
+
+.baraat__scroll {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  bottom: max(8px, calc(env(safe-area-inset-bottom) + 6px));
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  border: 0;
+  background: transparent;
+  padding: 6px 14px;
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: #fff6df;
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.85),
+    0 0 8px rgba(0, 0, 0, 0.55);
+  cursor: pointer;
+  opacity: 0;
+}
+
+.baraat.is-ready .baraat__scroll {
+  animation: baraat-scroll-in 1s ease 0.7s both;
+}
+
+.baraat__scroll i {
+  width: 1px;
+  height: 18px;
+  background: linear-gradient(to bottom, #fff6df, rgba(255, 246, 223, 0.15));
+  position: relative;
+}
+
+.baraat__scroll i::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -2px;
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid #fff6df;
+  border-bottom: 1.5px solid #fff6df;
+  transform: translateX(-50%) rotate(45deg);
+  animation: baraat-bob 1.8s ease-in-out infinite;
+}
+
+.baraat.is-leaving .baraat__layer,
+.baraat.is-leaving .baraat__scroll {
+  animation: baraat-fade 0.7s ease forwards;
+}
+
+.baraat.is-leaving::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #070403;
+  opacity: 0;
+  animation: baraat-curtain 1.05s ease forwards;
+  z-index: 7;
+  pointer-events: none;
+}
+
+.baraat__grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+}
+
+@keyframes baraat-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes baraat-fade {
+  to { opacity: 0; }
+}
+
+@keyframes baraat-reveal {
+  to { opacity: 0; }
+}
+
+@keyframes baraat-curtain {
+  to { opacity: 1; }
+}
+
+@keyframes baraat-scroll-in {
+  from { opacity: 0; transform: translate(-50%, 8px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+@keyframes baraat-bob {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0) rotate(45deg);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translateX(-50%) translateY(4px) rotate(45deg);
+    opacity: 1;
+  }
+}

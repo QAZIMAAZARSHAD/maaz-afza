@@ -95,6 +95,36 @@ textarea {
     url('/images/Page%207%20V1.png');
 }
 
+.app-shell[data-page='baraat'] .app-shell__ambient {
+  background-image:
+    radial-gradient(ellipse at 50% 30%, rgba(40, 16, 24, 0.4), transparent 55%),
+    url('/images/Page%208%20V1.png');
+}
+
+.app-shell[data-page='schedule'] .app-shell__ambient {
+  background-image:
+    radial-gradient(ellipse at 50% 30%, rgba(40, 16, 24, 0.4), transparent 55%),
+    url('/images/Page%209%20V1.png');
+}
+
+.app-shell[data-page='reception'] .app-shell__ambient {
+  background-image:
+    radial-gradient(ellipse at 50% 30%, rgba(180, 120, 60, 0.28), transparent 55%),
+    url('/images/Page%2010%20V1.png');
+}
+
+.app-shell[data-page='evening'] .app-shell__ambient {
+  background-image:
+    radial-gradient(ellipse at 50% 30%, rgba(180, 120, 60, 0.28), transparent 55%),
+    url('/images/Page%2011%20V1.png');
+}
+
+.app-shell[data-page='receptionDetails'] .app-shell__ambient {
+  background-image:
+    radial-gradient(ellipse at 50% 30%, rgba(180, 120, 60, 0.28), transparent 55%),
+    url('/images/Page%2012.png');
+}
+
 .app-shell[data-page='details'] .app-shell__ambient {
   background-image:
     radial-gradient(ellipse at 50% 30%, rgba(120, 80, 20, 0.28), transparent 55%),
@@ -118,9 +148,24 @@ textarea {
   height: min(100dvh, 100svh, calc(min(100vw, 28rem) * 1645 / 956));
 }
 
+.app-shell[data-page='cover'] .phone-stage {
+  width: min(100vw, 28rem, calc(100dvh * 957 / 1643));
+  height: min(100dvh, 100svh, calc(min(100vw, 28rem) * 1643 / 957));
+}
+
 .app-shell[data-page='details'] .phone-stage {
   width: min(100vw, 28rem, calc(100dvh * 957 / 1644));
   height: min(100dvh, 100svh, calc(min(100vw, 28rem) * 1644 / 957));
+}
+
+.app-shell[data-page='baraat'] .phone-stage {
+  width: min(100vw, 28rem, calc(100dvh * 965 / 1630));
+  height: min(100dvh, 100svh, calc(min(100vw, 28rem) * 1630 / 965));
+}
+
+.app-shell[data-page='schedule'] .phone-stage {
+  width: min(100vw, 28rem, calc(100dvh * 977 / 1609));
+  height: min(100dvh, 100svh, calc(min(100vw, 28rem) * 1609 / 977));
 }
 
 @media (min-width: 500px) {

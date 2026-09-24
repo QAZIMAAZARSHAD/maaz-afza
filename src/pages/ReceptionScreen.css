@@ -1,0 +1,166 @@
+.reception {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  container-type: inline-size;
+  touch-action: pan-y;
+  color: #5c4632;
+}
+
+.reception::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #070403;
+  z-index: 6;
+  pointer-events: none;
+  opacity: 1;
+}
+
+.reception.is-ready::after {
+  animation: reception-reveal 0.85s ease forwards;
+}
+
+.reception__bg {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.reception__layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0;
+}
+
+.reception.is-ready .reception__layer {
+  animation: reception-in 0.9s ease 0.15s both;
+}
+
+.reception__chapter,
+.reception__title,
+.reception__kicker,
+.reception__date,
+.reception__next {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.reception__chapter,
+.reception__kicker {
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #6e5c46;
+}
+
+.reception__chapter {
+  top: 27.15%;
+  font-size: clamp(10px, 2.45cqi, 13px);
+  letter-spacing: 0.42em;
+  padding-left: 0.42em;
+}
+
+.reception__title {
+  top: 42.8%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5cqi;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(42px, 11.4cqi, 60px);
+  line-height: 0.95;
+  color: #5c1a22;
+}
+
+.reception__kicker {
+  top: 53.4%;
+  font-size: clamp(10px, 2.45cqi, 13px);
+  letter-spacing: 0.38em;
+  padding-left: 0.38em;
+}
+
+.reception__date {
+  top: 58.5%;
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: clamp(12px, 2.9cqi, 15px);
+  letter-spacing: 0.28em;
+  padding-left: 0.28em;
+  color: #5c1a22;
+  font-variant-numeric: lining-nums;
+  font-feature-settings: 'lnum' 1;
+}
+
+.reception__next {
+  top: 66.2%;
+  width: 10cqi;
+  height: 10cqi;
+  border: 1px solid rgba(74, 52, 32, 0.72);
+  border-radius: 50%;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  color: #4a3420;
+  cursor: pointer;
+}
+
+.reception__next svg {
+  width: 42%;
+  height: 42%;
+}
+
+.reception__next:hover {
+  background: rgba(255, 248, 236, 0.28);
+  border-color: rgba(74, 52, 32, 0.9);
+}
+
+.reception.is-leaving .reception__layer {
+  animation: reception-fade 0.7s ease forwards;
+}
+
+.reception.is-leaving::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #070403;
+  opacity: 0;
+  animation: reception-curtain 1.05s ease forwards;
+  z-index: 7;
+  pointer-events: none;
+}
+
+.reception__grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+}
+
+@keyframes reception-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes reception-fade {
+  to { opacity: 0; }
+}
+
+@keyframes reception-reveal {
+  to { opacity: 0; }
+}
+
+@keyframes reception-curtain {
+  to { opacity: 1; }
+}

@@ -3,7 +3,7 @@ import GoldDust from '../components/GoldDust.jsx'
 import { INVITE_VERSIONS } from '../data/invitationVersions.js'
 import './InvitationScreen.css'
 
-export default function InvitationScreen({ onContinue, onBack, versionId, onVersionChange }) {
+export default function InvitationScreen({ onContinue, onBack, versionId, active = true }) {
   const version =
     INVITE_VERSIONS.find((item) => item.id === versionId) ?? INVITE_VERSIONS[0]
 
@@ -31,8 +31,7 @@ export default function InvitationScreen({ onContinue, onBack, versionId, onVers
   function leaveTo(next) {
     if (leavingRef.current) return
     leavingRef.current = true
-    setLeaving(true)
-    window.setTimeout(() => next?.(), 1100)
+    next?.()
   }
 
   function handleContinue() {
@@ -44,7 +43,7 @@ export default function InvitationScreen({ onContinue, onBack, versionId, onVers
   }
 
   useEffect(() => {
-    if (!ready) return undefined
+    if (!ready || !active) return undefined
     const node = sectionRef.current
     if (!node) return undefined
 
@@ -81,7 +80,7 @@ export default function InvitationScreen({ onContinue, onBack, versionId, onVers
       node.removeEventListener('touchend', onTouchEnd)
       window.removeEventListener('keydown', onKey)
     }
-  }, [ready])
+  }, [ready, active])
 
   return (
     <section
@@ -146,22 +145,6 @@ export default function InvitationScreen({ onContinue, onBack, versionId, onVers
 
       <GoldDust />
       <div className="invite__grain" />
-
-      <div className="invite__switcher" role="tablist" aria-label="Invitation versions">
-        {INVITE_VERSIONS.map((item) => (
-          <button
-            key={item.id}
-            type="button"
-            role="tab"
-            aria-selected={item.id === version.id}
-            className={item.id === version.id ? 'is-active' : ''}
-            onClick={() => onVersionChange?.(item.id)}
-            title={item.title}
-          >
-            {item.label}
-          </button>
-        ))}
-      </div>
 
       <button className="invite__scroll" type="button" onClick={handleContinue}>
         <span>Scroll</span>

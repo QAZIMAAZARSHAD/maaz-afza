@@ -3,7 +3,7 @@ import './BaraatScreen.css'
 
 const BG_SRC = `/images/${encodeURIComponent('Page 8 V1.png')}`
 
-export default function BaraatScreen({ onContinue, onBack }) {
+export default function BaraatScreen({ onContinue, onBack, active = true }) {
   const [ready, setReady] = useState(false)
   const [leaving, setLeaving] = useState(false)
   const leavingRef = useRef(false)
@@ -21,8 +21,7 @@ export default function BaraatScreen({ onContinue, onBack }) {
   function leaveTo(next) {
     if (leavingRef.current) return
     leavingRef.current = true
-    setLeaving(true)
-    window.setTimeout(() => next?.(), 1100)
+    next?.()
   }
 
   function handleContinue() {
@@ -34,7 +33,7 @@ export default function BaraatScreen({ onContinue, onBack }) {
   }
 
   useEffect(() => {
-    if (!ready) return undefined
+    if (!ready || !active) return undefined
     const node = sectionRef.current
     if (!node) return undefined
 
@@ -71,7 +70,7 @@ export default function BaraatScreen({ onContinue, onBack }) {
       node.removeEventListener('touchend', onTouchEnd)
       window.removeEventListener('keydown', onKey)
     }
-  }, [ready])
+  }, [ready, active])
 
   return (
     <section

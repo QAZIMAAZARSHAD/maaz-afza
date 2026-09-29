@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
+import GoldDust from '../components/GoldDust.jsx'
 import './WeddingScreen.css'
 
 const BG_SRC = `/images/${encodeURIComponent('Page 7 V1.png')}`
 
-export default function WeddingScreen({ onContinue, onBack }) {
+export default function WeddingScreen({ onContinue, onBack, chapter = 'Chapter II', active = true }) {
   const [ready, setReady] = useState(false)
   const [leaving, setLeaving] = useState(false)
   const leavingRef = useRef(false)
@@ -21,8 +22,7 @@ export default function WeddingScreen({ onContinue, onBack }) {
   function leaveTo(next) {
     if (leavingRef.current) return
     leavingRef.current = true
-    setLeaving(true)
-    window.setTimeout(() => next?.(), 1100)
+    next?.()
   }
 
   function handleContinue() {
@@ -34,7 +34,7 @@ export default function WeddingScreen({ onContinue, onBack }) {
   }
 
   useEffect(() => {
-    if (!ready) return undefined
+    if (!ready || !active) return undefined
     const node = sectionRef.current
     if (!node) return undefined
 
@@ -71,7 +71,7 @@ export default function WeddingScreen({ onContinue, onBack }) {
       node.removeEventListener('touchend', onTouchEnd)
       window.removeEventListener('keydown', onKey)
     }
-  }, [ready])
+  }, [ready, active])
 
   return (
     <section
@@ -79,9 +79,10 @@ export default function WeddingScreen({ onContinue, onBack }) {
       className={`wedding${ready ? ' is-ready' : ''}${leaving ? ' is-leaving' : ''}`}
     >
       <div className="wedding__bg" style={{ backgroundImage: `url("${BG_SRC}")` }} />
+      <GoldDust />
 
       <div className="wedding__layer">
-        <p className="wedding__chapter">Chapter II</p>
+        <p className="wedding__chapter">{chapter}</p>
         <h1 className="wedding__title">
           <span>Jashn-E</span>
           <span>Nikah</span>

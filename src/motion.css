@@ -1,0 +1,357 @@
+@container (max-width: 300px) {
+  .cover__groom,
+  .cover__bride {
+    font-size: 6.6cqi;
+  }
+
+  .invite__groom,
+  .invite__bride {
+    font-size: 6.4cqi;
+  }
+
+  .rsvp__title {
+    font-size: 5.5cqi;
+    white-space: normal;
+  }
+
+  .phone-stage .rsvp__send {
+    max-width: 100%;
+    font-size: 8px;
+    letter-spacing: 0.04em;
+    padding: 6px 10px;
+  }
+
+  .closing__love {
+    font-size: 8cqi;
+  }
+
+  .families__names li {
+    font-size: 3.6cqi;
+  }
+}
+
+.phone-stage [class$='__bg'] {
+  transform-origin: 50% 46%;
+  animation: bg-drift 56s ease-in-out infinite alternate;
+}
+
+.phone-stage > section.is-ready [class$='__layer'] {
+  animation: none;
+  opacity: 1;
+}
+
+.stage-pane {
+  position: absolute;
+  inset: 0;
+}
+
+.stage-pane.is-current {
+  z-index: 2;
+  animation: dissolve-in 1.25s ease both;
+}
+
+.stage-pane.is-previous {
+  z-index: 1;
+  pointer-events: none;
+  animation: dissolve-out 1.25s ease forwards;
+}
+
+.phone-stage > section.is-ready::after {
+  animation: none;
+  opacity: 0;
+}
+
+.phone-stage > section.is-leaving::before {
+  animation: none;
+  opacity: 0;
+  background: transparent;
+}
+
+@keyframes bg-drift {
+  from { transform: scale(1) translate3d(0, 0, 0); }
+  to { transform: scale(1.035) translate3d(0, -0.8%, 0); }
+}
+
+@keyframes dissolve-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes dissolve-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    filter: blur(7px);
+    transform: translate(-50%, calc(-50% + 16px));
+  }
+  to {
+    opacity: 1;
+    filter: none;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes bloom-in {
+  from {
+    opacity: 0;
+    filter: blur(12px);
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    filter: none;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes script-in {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translate(-50%, -50%) scale(0.72);
+  }
+  to {
+    opacity: 1;
+    filter: none;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes detail-in {
+  from { opacity: 0; transform: translateY(calc(-36% + 14px)); }
+  to { opacity: 1; transform: translateY(-36%); }
+}
+
+@keyframes schedule-line {
+  from { opacity: 0; transform: translateY(calc(-48% + 12px)); }
+  to { opacity: 1; transform: translateY(-48%); }
+}
+
+@keyframes venue-in {
+  from { opacity: 0; transform: translateY(calc(-50% + 12px)); }
+  to { opacity: 1; transform: translateY(-50%); }
+}
+
+@keyframes field-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes bloom-flow {
+  from { opacity: 0; filter: blur(10px); transform: scale(0.92); }
+  to { opacity: 1; filter: none; transform: none; }
+}
+
+/* Manjha: crest, then the word, then the date */
+.manjha.is-ready .manjha__crest {
+  animation: bloom-in 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+.manjha.is-ready .manjha__rule--above,
+.manjha.is-ready .manjha__rule--below {
+  animation: fade-in 1.2s ease 0.45s both;
+}
+.manjha.is-ready .manjha__chapter {
+  animation: rise-in 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+}
+.manjha.is-ready .manjha__title {
+  animation: bloom-in 1.7s cubic-bezier(0.16, 1, 0.3, 1) 0.85s both;
+}
+.manjha.is-ready .manjha__rule--title,
+.manjha.is-ready .manjha__date {
+  animation: rise-in 1.25s ease 1.35s both;
+}
+.manjha.is-ready .manjha__footer,
+.manjha.is-ready .manjha__knot {
+  animation: fade-in 1.3s ease 1.6s both;
+}
+.manjha.is-ready .manjha__next {
+  animation: fade-in 1s ease 1.7s both;
+}
+
+/* Ceremony: a spoken invitation, line by line */
+.ceremony.is-ready .ceremony__kicker {
+  animation: rise-in 1.3s ease 0.2s both;
+}
+.ceremony.is-ready .ceremony__title {
+  animation: bloom-in 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
+}
+.ceremony.is-ready .ceremony__of {
+  animation: script-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.95s both;
+}
+.ceremony.is-ready .ceremony__name {
+  animation: rise-in 1.45s cubic-bezier(0.16, 1, 0.3, 1) 1.15s both;
+}
+.ceremony.is-ready .ceremony__body {
+  animation: fade-in 1.4s ease 1.45s both;
+}
+.ceremony.is-ready .ceremony__when {
+  animation: rise-in 1.3s ease 1.7s both;
+}
+
+/* Manjha details: heading, then each gathering */
+.details.is-ready .details__heading {
+  animation: bloom-in 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+.details.is-ready .details__event:nth-child(2) { animation: detail-in 1.15s ease 0.55s both; }
+.details.is-ready .details__event:nth-child(3) { animation: detail-in 1.15s ease 0.8s both; }
+.details.is-ready .details__event:nth-child(4) { animation: detail-in 1.15s ease 1.05s both; }
+.details.is-ready .details__venue {
+  animation: venue-in 1.3s ease 1.3s both;
+}
+
+/* Wedding: the title opens, the rest follows quietly */
+.wedding.is-ready .wedding__chapter {
+  animation: fade-in 1.4s ease 0.25s both;
+}
+.wedding.is-ready .wedding__title {
+  animation: bloom-in 1.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+}
+.wedding.is-ready .wedding__kicker {
+  animation: rise-in 1.3s ease 1.35s both;
+}
+.wedding.is-ready .wedding__date {
+  animation: rise-in 1.25s ease 1.6s both;
+}
+.wedding.is-ready .wedding__sign {
+  animation: fade-in 1.5s ease 1.9s both;
+}
+.wedding.is-ready .wedding__next {
+  animation: fade-in 1s ease 1.7s both;
+}
+
+/* Baraat */
+.baraat.is-ready .baraat__invite {
+  animation: fade-in 1.3s ease 0.25s both;
+}
+.baraat.is-ready .baraat__of {
+  animation: script-in 1.25s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+}
+.baraat.is-ready .baraat__name {
+  animation: bloom-in 1.7s cubic-bezier(0.16, 1, 0.3, 1) 0.85s both;
+}
+.baraat.is-ready .baraat__date {
+  animation: rise-in 1.3s ease 1.45s both;
+}
+
+/* Baraat schedule */
+.schedule.is-ready .schedule__heading {
+  animation: bloom-in 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+.schedule.is-ready .schedule__rule,
+.schedule.is-ready .schedule__date {
+  animation: fade-in 1.2s ease 0.55s both;
+}
+.schedule.is-ready .schedule__event:nth-child(4) { animation: schedule-line 1.05s ease 0.7s both; }
+.schedule.is-ready .schedule__event:nth-child(5) { animation: schedule-line 1.05s ease 0.88s both; }
+.schedule.is-ready .schedule__event:nth-child(6) { animation: schedule-line 1.05s ease 1.06s both; }
+.schedule.is-ready .schedule__event:nth-child(7) { animation: schedule-line 1.05s ease 1.24s both; }
+.schedule.is-ready .schedule__event:nth-child(8) { animation: schedule-line 1.05s ease 1.42s both; }
+.schedule.is-ready .schedule__event:nth-child(9) { animation: schedule-line 1.05s ease 1.6s both; }
+.schedule.is-ready .schedule__event:nth-child(10) { animation: schedule-line 1.05s ease 1.78s both; }
+.schedule.is-ready .schedule__venue {
+  animation: fade-in 1.3s ease 1.9s both;
+}
+
+/* Reception chapter */
+.reception.is-ready .reception__chapter {
+  animation: fade-in 1.4s ease 0.3s both;
+}
+.reception.is-ready .reception__title {
+  animation: bloom-in 1.85s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+}
+.reception.is-ready .reception__kicker {
+  animation: rise-in 1.3s ease 1.4s both;
+}
+.reception.is-ready .reception__date {
+  animation: rise-in 1.25s ease 1.65s both;
+}
+.reception.is-ready .reception__next {
+  animation: fade-in 1s ease 1.85s both;
+}
+
+/* Reception invitation */
+.evening.is-ready .evening__kicker {
+  animation: fade-in 1.2s ease 0.2s both;
+}
+.evening.is-ready .evening__title {
+  animation: bloom-in 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+.evening.is-ready .evening__script {
+  animation: script-in 1.15s cubic-bezier(0.16, 1, 0.3, 1) 0.85s both;
+}
+.evening.is-ready .evening__script--amp {
+  animation: script-in 1.15s cubic-bezier(0.16, 1, 0.3, 1) 1.28s both;
+}
+.evening.is-ready .evening__name {
+  animation: rise-in 1.4s cubic-bezier(0.16, 1, 0.3, 1) 1.1s both;
+}
+.evening.is-ready .evening__name--bride {
+  animation: rise-in 1.4s cubic-bezier(0.16, 1, 0.3, 1) 1.45s both;
+}
+.evening.is-ready .evening__day,
+.evening.is-ready .evening__date {
+  animation: fade-in 1.25s ease 1.75s both;
+}
+
+/* Reception details */
+.feast.is-ready .feast__title {
+  animation: bloom-in 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+.feast.is-ready .feast__mark--meal,
+.feast.is-ready .feast__meal,
+.feast.is-ready .feast__time {
+  animation: rise-in 1.2s ease 0.7s both;
+}
+.feast.is-ready .feast__mark--pin,
+.feast.is-ready .feast__venue-label,
+.feast.is-ready .feast__hotel,
+.feast.is-ready .feast__address {
+  animation: rise-in 1.25s ease 1.15s both;
+}
+.feast.is-ready .feast__directions {
+  animation: fade-in 1.1s ease 1.55s both;
+}
+
+/* Families: each group of names on its own */
+.families.is-ready .families__group {
+  animation: fade-in 1.15s ease both;
+}
+.families.is-ready .families__group:nth-child(1) { animation-delay: 0.35s; }
+.families.is-ready .families__group:nth-child(2) { animation-delay: 0.75s; }
+.families.is-ready .families__group:nth-child(3) { animation-delay: 1.15s; }
+
+/* RSVP: the form settles field by field */
+.rsvp.is-ready .rsvp__form > * {
+  animation: field-in 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.rsvp.is-ready .rsvp__form > *:nth-child(1) { animation-delay: 0.15s; }
+.rsvp.is-ready .rsvp__form > *:nth-child(2) { animation-delay: 0.28s; }
+.rsvp.is-ready .rsvp__form > *:nth-child(3) { animation-delay: 0.42s; }
+.rsvp.is-ready .rsvp__form > *:nth-child(4) { animation-delay: 0.56s; }
+.rsvp.is-ready .rsvp__form > *:nth-child(5) { animation-delay: 0.7s; }
+.rsvp.is-ready .rsvp__form > *:nth-child(6) { animation-delay: 0.84s; }
+.rsvp.is-ready .rsvp__form > *:nth-child(7) { animation-delay: 0.98s; }
+.rsvp.is-ready .rsvp__form > *:nth-child(8) { animation-delay: 1.12s; }
+.rsvp.is-ready .rsvp__thanks h1 {
+  animation: bloom-flow 1.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+.rsvp.is-ready .rsvp__thanks p {
+  animation: fade-in 1.4s ease 0.7s both;
+}
+
+/* Closing */
+.closing.is-ready .closing__love {
+  animation: script-in 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+.closing.is-ready .closing__names {
+  animation: rise-in 1.45s cubic-bezier(0.16, 1, 0.3, 1) 0.95s both;
+}

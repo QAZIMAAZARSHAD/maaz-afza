@@ -1,0 +1,114 @@
+.closing {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  container-type: inline-size;
+  touch-action: pan-y;
+}
+
+.closing::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #070403;
+  z-index: 6;
+  pointer-events: none;
+  opacity: 1;
+}
+
+.closing.is-ready::after {
+  animation: closing-reveal 0.85s ease forwards;
+}
+
+.closing__bg {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.closing__layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0;
+}
+
+.closing.is-ready .gold-dust {
+  opacity: 0.7;
+  z-index: 1;
+  transition: opacity 1.4s ease;
+}
+
+.closing.is-ready .closing__layer {
+  animation: closing-in 0.9s ease 0.15s both;
+}
+
+.closing__love,
+.closing__names {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  white-space: nowrap;
+  color: #5c1a22;
+}
+
+.closing__love {
+  top: 54.6%;
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(34px, 9cqi, 48px);
+  line-height: 1;
+}
+
+.closing__names {
+  top: 59.4%;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(18px, 4.6cqi, 26px);
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.closing.is-leaving .closing__layer {
+  animation: closing-fade 0.7s ease forwards;
+}
+
+.closing.is-leaving::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #070403;
+  opacity: 0;
+  animation: closing-curtain 1.05s ease forwards;
+  z-index: 7;
+  pointer-events: none;
+}
+
+.closing__grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+}
+
+@keyframes closing-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes closing-fade {
+  to { opacity: 0; }
+}
+
+@keyframes closing-reveal {
+  to { opacity: 0; }
+}
+
+@keyframes closing-curtain {
+  to { opacity: 1; }
+}

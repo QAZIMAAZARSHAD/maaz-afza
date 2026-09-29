@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import GoldDust from '../components/GoldDust.jsx'
 import './ManjhaScreen.css'
 
 const BG_SRC = `/images/${encodeURIComponent('Page 4 V1.png')}`
@@ -51,7 +52,7 @@ function Knot({ place }) {
   )
 }
 
-export default function ManjhaScreen({ onContinue, onBack }) {
+export default function ManjhaScreen({ onContinue, onBack, chapter = 'Chapter I', active = true }) {
   const [ready, setReady] = useState(false)
   const [leaving, setLeaving] = useState(false)
   const leavingRef = useRef(false)
@@ -69,8 +70,7 @@ export default function ManjhaScreen({ onContinue, onBack }) {
   function leaveTo(next) {
     if (leavingRef.current) return
     leavingRef.current = true
-    setLeaving(true)
-    window.setTimeout(() => next?.(), 1100)
+    next?.()
   }
 
   function handleContinue() {
@@ -82,7 +82,7 @@ export default function ManjhaScreen({ onContinue, onBack }) {
   }
 
   useEffect(() => {
-    if (!ready) return undefined
+    if (!ready || !active) return undefined
     const node = sectionRef.current
     if (!node) return undefined
 
@@ -119,7 +119,7 @@ export default function ManjhaScreen({ onContinue, onBack }) {
       node.removeEventListener('touchend', onTouchEnd)
       window.removeEventListener('keydown', onKey)
     }
-  }, [ready])
+  }, [ready, active])
 
   return (
     <section
@@ -127,11 +127,12 @@ export default function ManjhaScreen({ onContinue, onBack }) {
       className={`manjha${ready ? ' is-ready' : ''}${leaving ? ' is-leaving' : ''}`}
     >
       <div className="manjha__bg" style={{ backgroundImage: `url("${BG_SRC}")` }} />
+      <GoldDust />
 
       <div className="manjha__layer">
         <Crest />
         <Rule place="above" />
-        <p className="manjha__chapter">Chapter I</p>
+        <p className="manjha__chapter">{chapter}</p>
         <Rule place="below" />
         <h1 className="manjha__title">Manjha</h1>
         <Rule place="title" />

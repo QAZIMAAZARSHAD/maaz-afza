@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
+import GoldDust from '../components/GoldDust.jsx'
 import './ReceptionScreen.css'
 
 const BG_SRC = `/images/${encodeURIComponent('Page 10 V1.png')}`
 
-export default function ReceptionScreen({ onContinue, onBack }) {
+export default function ReceptionScreen({ onContinue, onBack, chapter = 'Chapter III', active = true }) {
   const [ready, setReady] = useState(false)
   const [leaving, setLeaving] = useState(false)
   const leavingRef = useRef(false)
@@ -21,8 +22,7 @@ export default function ReceptionScreen({ onContinue, onBack }) {
   function leaveTo(next) {
     if (leavingRef.current) return
     leavingRef.current = true
-    setLeaving(true)
-    window.setTimeout(() => next?.(), 1100)
+    next?.()
   }
 
   function handleContinue() {
@@ -34,7 +34,7 @@ export default function ReceptionScreen({ onContinue, onBack }) {
   }
 
   useEffect(() => {
-    if (!ready) return undefined
+    if (!ready || !active) return undefined
     const node = sectionRef.current
     if (!node) return undefined
 
@@ -71,7 +71,7 @@ export default function ReceptionScreen({ onContinue, onBack }) {
       node.removeEventListener('touchend', onTouchEnd)
       window.removeEventListener('keydown', onKey)
     }
-  }, [ready])
+  }, [ready, active])
 
   return (
     <section
@@ -79,9 +79,10 @@ export default function ReceptionScreen({ onContinue, onBack }) {
       className={`reception${ready ? ' is-ready' : ''}${leaving ? ' is-leaving' : ''}`}
     >
       <div className="reception__bg" style={{ backgroundImage: `url("${BG_SRC}")` }} />
+      <GoldDust />
 
       <div className="reception__layer">
-        <p className="reception__chapter">Chapter III</p>
+        {chapter ? <p className="reception__chapter">{chapter}</p> : null}
         <h1 className="reception__title">
           <span>Dawate-E</span>
           <span>Walima</span>

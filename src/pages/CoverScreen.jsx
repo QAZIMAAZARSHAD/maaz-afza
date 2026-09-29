@@ -4,7 +4,7 @@ import './CoverScreen.css'
 
 const BG_SRC = `/images/${encodeURIComponent('Page 2.png')}`
 
-export default function CoverScreen({ onOpen, onBack }) {
+export default function CoverScreen({ onOpen, onBack, active = true }) {
   const [ready, setReady] = useState(false)
   const [leaving, setLeaving] = useState(false)
   const leavingRef = useRef(false)
@@ -22,8 +22,7 @@ export default function CoverScreen({ onOpen, onBack }) {
   function leaveTo(next) {
     if (leavingRef.current) return
     leavingRef.current = true
-    setLeaving(true)
-    window.setTimeout(() => next?.(), 1100)
+    next?.()
   }
 
   function handleOpen() {
@@ -35,7 +34,7 @@ export default function CoverScreen({ onOpen, onBack }) {
   }
 
   useEffect(() => {
-    if (!ready) return undefined
+    if (!ready || !active) return undefined
     const node = sectionRef.current
     if (!node) return undefined
 
@@ -72,7 +71,7 @@ export default function CoverScreen({ onOpen, onBack }) {
       node.removeEventListener('touchend', onTouchEnd)
       window.removeEventListener('keydown', onKey)
     }
-  }, [ready])
+  }, [ready, active])
 
   return (
     <section

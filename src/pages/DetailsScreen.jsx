@@ -30,7 +30,7 @@ const EVENTS = [
   },
 ]
 
-export default function DetailsScreen({ onContinue, onBack }) {
+export default function DetailsScreen({ onContinue, onBack, active = true }) {
   const [ready, setReady] = useState(false)
   const [leaving, setLeaving] = useState(false)
   const leavingRef = useRef(false)
@@ -48,8 +48,7 @@ export default function DetailsScreen({ onContinue, onBack }) {
   function leaveTo(next) {
     if (leavingRef.current) return
     leavingRef.current = true
-    setLeaving(true)
-    window.setTimeout(() => next?.(), 1100)
+    next?.()
   }
 
   function handleContinue() {
@@ -61,7 +60,7 @@ export default function DetailsScreen({ onContinue, onBack }) {
   }
 
   useEffect(() => {
-    if (!ready) return undefined
+    if (!ready || !active) return undefined
     const node = sectionRef.current
     if (!node) return undefined
 
@@ -99,7 +98,7 @@ export default function DetailsScreen({ onContinue, onBack }) {
       node.removeEventListener('touchend', onTouchEnd)
       window.removeEventListener('keydown', onKey)
     }
-  }, [ready])
+  }, [ready, active])
 
   return (
     <section

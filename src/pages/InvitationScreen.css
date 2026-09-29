@@ -215,6 +215,7 @@
 .invite__note--mid {
   position: absolute;
   z-index: 2;
+  width: auto;
   left: 15%;
   right: 15%;
   top: 53.4%;
@@ -387,51 +388,19 @@
 }
 
 .invite.is-ready .invite__copy {
-  animation: invite-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+  animation: invite-in 1.7s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
 }
 
 .invite.is-ready .invite__note--mid {
-  animation: invite-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+  animation: invite-in 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.85s both;
 }
 
 .invite.is-ready .invite__events {
-  animation: invite-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+  animation: invite-in 1.5s cubic-bezier(0.16, 1, 0.3, 1) 1.15s both;
 }
 
 .invite.is-ready .invite__closing {
-  animation: invite-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both;
-}
-
-.invite__switcher {
-  position: absolute;
-  z-index: 8;
-  top: 10px;
-  left: 8px;
-  display: flex;
-  gap: 4px;
-  padding: 3px;
-  border-radius: 999px;
-  background: rgba(255, 248, 236, 0.88);
-  box-shadow: 0 6px 18px rgba(40, 16, 12, 0.18);
-  backdrop-filter: blur(8px);
-}
-
-.invite__switcher button {
-  border: 0;
-  background: transparent;
-  color: #6b1c28;
-  font-family: 'Cinzel', serif;
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  padding: 5px 8px;
-  border-radius: 999px;
-  cursor: pointer;
-}
-
-.invite__switcher button.is-active {
-  background: #6b1c28;
-  color: #f6ead2;
+  animation: invite-in 1.5s cubic-bezier(0.16, 1, 0.3, 1) 1.5s both;
 }
 
 .invite__scroll {
@@ -491,8 +460,7 @@
 .invite.is-leaving .invite__events,
 .invite.is-leaving .invite__closing,
 .invite.is-leaving .invite__note--mid,
-.invite.is-leaving .invite__scroll,
-.invite.is-leaving .invite__switcher {
+.invite.is-leaving .invite__scroll {
   animation: invite-fade 0.7s ease forwards;
 }
 

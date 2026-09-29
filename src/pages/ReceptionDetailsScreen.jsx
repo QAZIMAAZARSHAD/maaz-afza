@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import './ReceptionDetailsScreen.css'
 
-const BG_SRC = `/images/${encodeURIComponent('Page 12.png')}`
+const BG_SRC = `/images/${encodeURIComponent('Page 12 V1.png')}`
 
-export default function ReceptionDetailsScreen({ onContinue, onBack }) {
+const MAPS_URL =
+  'https://www.google.com/maps/search/?api=1&query=Hotel%20Awadh%20International%2C%20Faizabad%20Road%2C%20Near%20Indira%20Canal%2C%20Gomti%20Nagar%2C%20Lucknow%20226028'
+
+export default function ReceptionDetailsScreen({ onContinue, onBack, active = true }) {
   const [ready, setReady] = useState(false)
   const [leaving, setLeaving] = useState(false)
   const leavingRef = useRef(false)
@@ -21,8 +24,7 @@ export default function ReceptionDetailsScreen({ onContinue, onBack }) {
   function leaveTo(next) {
     if (leavingRef.current) return
     leavingRef.current = true
-    setLeaving(true)
-    window.setTimeout(() => next?.(), 1100)
+    next?.()
   }
 
   function handleContinue() {
@@ -34,7 +36,7 @@ export default function ReceptionDetailsScreen({ onContinue, onBack }) {
   }
 
   useEffect(() => {
-    if (!ready) return undefined
+    if (!ready || !active) return undefined
     const node = sectionRef.current
     if (!node) return undefined
 
@@ -51,6 +53,7 @@ export default function ReceptionDetailsScreen({ onContinue, onBack }) {
       else if (dy < -36) handleBack()
     }
     const onKey = (event) => {
+      if (event.target.closest('a') && event.key === 'Enter') return
       if (['ArrowDown', 'PageDown', ' ', 'Enter'].includes(event.key)) {
         event.preventDefault()
         handleContinue()
@@ -71,7 +74,7 @@ export default function ReceptionDetailsScreen({ onContinue, onBack }) {
       node.removeEventListener('touchend', onTouchEnd)
       window.removeEventListener('keydown', onKey)
     }
-  }, [ready])
+  }, [ready, active])
 
   return (
     <section
@@ -81,7 +84,10 @@ export default function ReceptionDetailsScreen({ onContinue, onBack }) {
       <div className="feast__bg" style={{ backgroundImage: `url("${BG_SRC}")` }} />
 
       <div className="feast__layer">
-        <h1 className="feast__title">Reception Details</h1>
+        <h1 className="feast__title">
+          <span>Reception</span>
+          <span>Details</span>
+        </h1>
 
         <div className="feast__mark feast__mark--meal" aria-hidden="true">
           <svg viewBox="0 0 88 64">
@@ -125,6 +131,14 @@ export default function ReceptionDetailsScreen({ onContinue, onBack }) {
           <br />
           Gomti Nagar, Lucknow - 226028
         </p>
+
+        <a className="feast__directions" href={MAPS_URL} target="_blank" rel="noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 21s6.5-5.6 6.5-10.2a6.5 6.5 0 1 0-13 0C5.5 15.4 12 21 12 21z" />
+            <circle cx="12" cy="10.6" r="2.1" />
+          </svg>
+          Get directions
+        </a>
       </div>
 
       <button className="feast__scroll" type="button" onClick={handleContinue}>

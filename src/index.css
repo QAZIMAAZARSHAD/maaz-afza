@@ -122,7 +122,25 @@ textarea {
 .app-shell[data-page='receptionDetails'] .app-shell__ambient {
   background-image:
     radial-gradient(ellipse at 50% 30%, rgba(180, 120, 60, 0.28), transparent 55%),
-    url('/images/Page%2012.png');
+    url('/images/Page%2012%20V1.png');
+}
+
+.app-shell[data-page='families'] .app-shell__ambient {
+  background-image:
+    radial-gradient(ellipse at 50% 30%, rgba(120, 40, 30, 0.28), transparent 55%),
+    url('/images/Page%2014.png');
+}
+
+.app-shell[data-page='rsvp'] .app-shell__ambient {
+  background-image:
+    radial-gradient(ellipse at 50% 30%, rgba(160, 90, 40, 0.28), transparent 55%),
+    url('/images/Page%2015.png');
+}
+
+.app-shell[data-page='closing'] .app-shell__ambient {
+  background-image:
+    radial-gradient(ellipse at 50% 30%, rgba(180, 90, 40, 0.28), transparent 55%),
+    url('/images/Page%2016.png');
 }
 
 .app-shell[data-page='details'] .app-shell__ambient {
@@ -138,34 +156,6 @@ textarea {
   overflow: hidden;
   background: #000;
   isolation: isolate;
-}
-
-.app-shell[data-page='invitation'] .phone-stage,
-.app-shell[data-page='manjha'] .phone-stage,
-.app-shell[data-page='ceremony'] .phone-stage,
-.app-shell[data-page='wedding'] .phone-stage {
-  width: min(100vw, 28rem, calc(100dvh * 956 / 1645));
-  height: min(100dvh, 100svh, calc(min(100vw, 28rem) * 1645 / 956));
-}
-
-.app-shell[data-page='cover'] .phone-stage {
-  width: min(100vw, 28rem, calc(100dvh * 957 / 1643));
-  height: min(100dvh, 100svh, calc(min(100vw, 28rem) * 1643 / 957));
-}
-
-.app-shell[data-page='details'] .phone-stage {
-  width: min(100vw, 28rem, calc(100dvh * 957 / 1644));
-  height: min(100dvh, 100svh, calc(min(100vw, 28rem) * 1644 / 957));
-}
-
-.app-shell[data-page='baraat'] .phone-stage {
-  width: min(100vw, 28rem, calc(100dvh * 965 / 1630));
-  height: min(100dvh, 100svh, calc(min(100vw, 28rem) * 1630 / 965));
-}
-
-.app-shell[data-page='schedule'] .phone-stage {
-  width: min(100vw, 28rem, calc(100dvh * 977 / 1609));
-  height: min(100dvh, 100svh, calc(min(100vw, 28rem) * 1609 / 977));
 }
 
 @media (min-width: 500px) {

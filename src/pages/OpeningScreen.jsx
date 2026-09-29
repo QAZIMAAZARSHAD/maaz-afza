@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import GoldDust from '../components/GoldDust.jsx'
 import './OpeningScreen.css'
 
@@ -6,7 +6,7 @@ const BG_SRC = `/images/${encodeURIComponent('Page 1.png')}`
 
 export default function OpeningScreen({ onEnter }) {
   const [ready, setReady] = useState(false)
-  const [leaving, setLeaving] = useState(false)
+  const lock = useRef(false)
 
   useEffect(() => {
     const img = new Image()
@@ -17,13 +17,13 @@ export default function OpeningScreen({ onEnter }) {
   }, [])
 
   function handleEnter() {
-    if (leaving) return
-    setLeaving(true)
-    window.setTimeout(() => onEnter?.(), 1100)
+    if (lock.current) return
+    lock.current = true
+    onEnter?.()
   }
 
   return (
-    <section className={`opening${ready ? ' is-ready' : ''}${leaving ? ' is-leaving' : ''}`}>
+    <section className={`opening${ready ? ' is-ready' : ''}`}>
       <div className="opening__bg" style={{ backgroundImage: `url("${BG_SRC}")` }} />
       <div className="opening__wash" />
       <div className="opening__glow" />

@@ -61,6 +61,10 @@ export default function RsvpScreen({ onContinue, onBack, eventIds, active = true
     next?.()
   }
 
+  useEffect(() => {
+    if (active) leavingRef.current = false
+  }, [active])
+
   function handleContinue() {
     leaveTo(onContinue)
   }

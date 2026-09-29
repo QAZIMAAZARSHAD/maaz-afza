@@ -34,6 +34,10 @@ export default function InvitationScreen({ onContinue, onBack, versionId, active
     next?.()
   }
 
+  useEffect(() => {
+    if (active) leavingRef.current = false
+  }, [active])
+
   function handleContinue() {
     leaveTo(onContinue)
   }

@@ -36,7 +36,7 @@ export default function App() {
   }
 
   function renderPage(id, active) {
-    if (id === 'opening') return <OpeningScreen onEnter={() => go('opening', 1)} />
+    if (id === 'opening') return <OpeningScreen active={active} onEnter={() => go('opening', 1)} />
     if (id === 'cover') {
       return (
         <CoverScreen

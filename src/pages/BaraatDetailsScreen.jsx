@@ -66,6 +66,10 @@ export default function BaraatDetailsScreen({ onContinue, onBack, active = true 
     next?.()
   }
 
+  useEffect(() => {
+    if (active) leavingRef.current = false
+  }, [active])
+
   function handleContinue() {
     leaveTo(onContinue)
   }

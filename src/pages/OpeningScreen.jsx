@@ -4,7 +4,7 @@ import './OpeningScreen.css'
 
 const BG_SRC = `/images/${encodeURIComponent('Page 1.png')}`
 
-export default function OpeningScreen({ onEnter }) {
+export default function OpeningScreen({ onEnter, active = true }) {
   const [ready, setReady] = useState(false)
   const lock = useRef(false)
 
@@ -21,6 +21,10 @@ export default function OpeningScreen({ onEnter }) {
     lock.current = true
     onEnter?.()
   }
+
+  useEffect(() => {
+    if (active) lock.current = false
+  }, [active])
 
   return (
     <section className={`opening${ready ? ' is-ready' : ''}`}>

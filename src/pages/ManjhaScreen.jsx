@@ -73,6 +73,10 @@ export default function ManjhaScreen({ onContinue, onBack, chapter = 'Chapter I'
     next?.()
   }
 
+  useEffect(() => {
+    if (active) leavingRef.current = false
+  }, [active])
+
   function handleContinue() {
     leaveTo(onContinue)
   }

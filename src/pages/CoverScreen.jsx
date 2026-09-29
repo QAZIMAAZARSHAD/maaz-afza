@@ -3,6 +3,7 @@ import GoldDust from '../components/GoldDust.jsx'
 import './CoverScreen.css'
 
 const BG_SRC = `/images/${encodeURIComponent('Page 2.png')}`
+const COUPLE_SRC = `/images/${encodeURIComponent('Bride and Groom.png')}`
 
 export default function CoverScreen({ onOpen, onBack, active = true }) {
   const [ready, setReady] = useState(false)
@@ -24,6 +25,10 @@ export default function CoverScreen({ onOpen, onBack, active = true }) {
     leavingRef.current = true
     next?.()
   }
+
+  useEffect(() => {
+    if (active) leavingRef.current = false
+  }, [active])
 
   function handleOpen() {
     leaveTo(onOpen)
@@ -90,18 +95,15 @@ export default function CoverScreen({ onOpen, onBack, active = true }) {
             <span className="cover__bride">Afza Aslam</span>
           </h1>
         </div>
+
+        <div className="cover__wash" />
+        <img className="cover__couple" src={COUPLE_SRC} alt="" />
       </div>
 
-      <div className="cover__wash" />
       <div className="cover__glow cover__glow--left" />
       <div className="cover__glow cover__glow--right" />
       <GoldDust />
       <div className="cover__grain" />
-
-      <button className="cover__scroll" type="button" onClick={handleOpen}>
-        <span>Scroll</span>
-        <i />
-      </button>
     </section>
   )
 }

@@ -25,6 +25,10 @@ export default function ClosingScreen({ onBack, active = true }) {
   }
 
   useEffect(() => {
+    if (active) leavingRef.current = false
+  }, [active])
+
+  useEffect(() => {
     if (!ready || !active) return undefined
     const node = sectionRef.current
     if (!node) return undefined

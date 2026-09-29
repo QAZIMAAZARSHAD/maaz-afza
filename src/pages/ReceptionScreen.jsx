@@ -25,6 +25,10 @@ export default function ReceptionScreen({ onContinue, onBack, chapter = 'Chapter
     next?.()
   }
 
+  useEffect(() => {
+    if (active) leavingRef.current = false
+  }, [active])
+
   function handleContinue() {
     leaveTo(onContinue)
   }

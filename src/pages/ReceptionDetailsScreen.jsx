@@ -27,6 +27,10 @@ export default function ReceptionDetailsScreen({ onContinue, onBack, active = tr
     next?.()
   }
 
+  useEffect(() => {
+    if (active) leavingRef.current = false
+  }, [active])
+
   function handleContinue() {
     leaveTo(onContinue)
   }

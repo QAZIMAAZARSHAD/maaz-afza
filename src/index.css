@@ -58,7 +58,7 @@ textarea {
   inset: -8%;
   background:
     radial-gradient(ellipse at 50% 30%, rgba(90, 22, 32, 0.35), transparent 55%),
-    url('/images/Page%201.png') center / cover no-repeat;
+    url('/images/page-01.webp') center / cover no-repeat;
   filter: blur(42px) saturate(0.7) brightness(0.28);
   transform: scale(1.12);
   pointer-events: none;
@@ -68,85 +68,85 @@ textarea {
 .app-shell[data-page='cover'] .app-shell__ambient {
   background-image:
     radial-gradient(ellipse at 50% 30%, rgba(90, 22, 32, 0.35), transparent 55%),
-    url('/images/Page%202.png');
+    url('/images/page-02.webp');
 }
 
 .app-shell[data-page='invitation'] .app-shell__ambient {
   background-image:
     radial-gradient(ellipse at 50% 30%, rgba(90, 22, 32, 0.35), transparent 55%),
-    url('/images/Page%203%20V1.png');
+    url('/images/page-03-v1.webp');
 }
 
 .app-shell[data-page='manjha'] .app-shell__ambient {
   background-image:
     radial-gradient(ellipse at 50% 30%, rgba(120, 80, 20, 0.28), transparent 55%),
-    url('/images/Page%204%20V1.png');
+    url('/images/page-04.webp');
 }
 
 .app-shell[data-page='ceremony'] .app-shell__ambient {
   background-image:
     radial-gradient(ellipse at 50% 30%, rgba(120, 80, 20, 0.28), transparent 55%),
-    url('/images/Page%205%20V1.png');
+    url('/images/page-05.webp');
 }
 
 .app-shell[data-page='wedding'] .app-shell__ambient {
   background-image:
     radial-gradient(ellipse at 50% 30%, rgba(40, 16, 24, 0.4), transparent 55%),
-    url('/images/Page%207%20V1.png');
+    url('/images/page-07.webp');
 }
 
 .app-shell[data-page='baraat'] .app-shell__ambient {
   background-image:
     radial-gradient(ellipse at 50% 30%, rgba(40, 16, 24, 0.4), transparent 55%),
-    url('/images/Page%208%20V1.png');
+    url('/images/page-08.webp');
 }
 
 .app-shell[data-page='schedule'] .app-shell__ambient {
   background-image:
     radial-gradient(ellipse at 50% 30%, rgba(40, 16, 24, 0.4), transparent 55%),
-    url('/images/Page%209%20V1.png');
+    url('/images/page-09.webp');
 }
 
 .app-shell[data-page='reception'] .app-shell__ambient {
   background-image:
     radial-gradient(ellipse at 50% 30%, rgba(180, 120, 60, 0.28), transparent 55%),
-    url('/images/Page%2010%20V1.png');
+    url('/images/page-10.webp');
 }
 
 .app-shell[data-page='evening'] .app-shell__ambient {
   background-image:
     radial-gradient(ellipse at 50% 30%, rgba(180, 120, 60, 0.28), transparent 55%),
-    url('/images/Page%2011%20V1.png');
+    url('/images/page-11.webp');
 }
 
 .app-shell[data-page='receptionDetails'] .app-shell__ambient {
   background-image:
     radial-gradient(ellipse at 50% 30%, rgba(180, 120, 60, 0.28), transparent 55%),
-    url('/images/Page%2012%20V1.png');
+    url('/images/page-12.webp');
 }
 
 .app-shell[data-page='families'] .app-shell__ambient {
   background-image:
     radial-gradient(ellipse at 50% 30%, rgba(120, 40, 30, 0.28), transparent 55%),
-    url('/images/Page%2014.png');
+    url('/images/page-14.webp');
 }
 
 .app-shell[data-page='rsvp'] .app-shell__ambient {
   background-image:
     radial-gradient(ellipse at 50% 30%, rgba(160, 90, 40, 0.28), transparent 55%),
-    url('/images/Page%2015.png');
+    url('/images/page-15.webp');
 }
 
 .app-shell[data-page='closing'] .app-shell__ambient {
   background-image:
     radial-gradient(ellipse at 50% 30%, rgba(180, 90, 40, 0.28), transparent 55%),
-    url('/images/Page%2016.png');
+    url('/images/page-16.webp');
 }
 
 .app-shell[data-page='details'] .app-shell__ambient {
   background-image:
     radial-gradient(ellipse at 50% 30%, rgba(120, 80, 20, 0.28), transparent 55%),
-    url('/images/Page%206%20V1.png');
+    url('/images/page-06.webp');
 }
 
 .phone-stage {
@@ -156,6 +156,19 @@ textarea {
   overflow: hidden;
   background: #000;
   isolation: isolate;
+}
+
+@media (max-width: 499px) {
+  .app-shell {
+    height: 100dvh;
+    min-height: 100dvh;
+  }
+
+  .phone-stage {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+  }
 }
 
 @media (min-width: 500px) {

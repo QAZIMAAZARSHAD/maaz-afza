@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import './FamiliesScreen.css'
 
-const BG_SRC = `/images/${encodeURIComponent('Page 14.png')}`
+const BG_SRC = '/images/page-14.webp'
 
 const NAMES = [
   'Khalid Islam',

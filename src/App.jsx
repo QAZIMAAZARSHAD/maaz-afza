@@ -15,6 +15,7 @@ import FamiliesScreen from './pages/FamiliesScreen.jsx'
 import RsvpScreen from './pages/RsvpScreen.jsx'
 import ClosingScreen from './pages/ClosingScreen.jsx'
 import { journeyFromPath } from './data/journeys.js'
+import { imagesForPage, preloadImages } from './data/artwork.js'
 import './motion.css'
 
 export default function App() {
@@ -24,6 +25,12 @@ export default function App() {
   const fadeTimer = useRef(0)
 
   useEffect(() => () => window.clearTimeout(fadeTimer.current), [])
+
+  useEffect(() => {
+    const index = journey.pages.indexOf(page)
+    const ids = [page, journey.pages[index + 1], journey.pages[index - 1]].filter(Boolean)
+    preloadImages(ids.flatMap((id) => imagesForPage(id, journey.id)))
+  }, [page, journey])
 
   function go(id, delta) {
     const index = journey.pages.indexOf(id)

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import './BaraatScreen.css'
 
-const BG_SRC = `/images/${encodeURIComponent('Page 8 V1.png')}`
+const BG_SRC = '/images/page-08.webp'
 
 export default function BaraatScreen({ onContinue, onBack, active = true }) {
   const [ready, setReady] = useState(false)

@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import GoldDust from '../components/GoldDust.jsx'
 import './CoverScreen.css'
 
-const BG_SRC = `/images/${encodeURIComponent('Page 2.png')}`
-const COUPLE_SRC = `/images/${encodeURIComponent('Bride and Groom.png')}`
+const BG_SRC = '/images/page-02.webp'
+const COUPLE_SRC = '/images/couple.webp'
 
 export default function CoverScreen({ onOpen, onBack, active = true }) {
   const [ready, setReady] = useState(false)

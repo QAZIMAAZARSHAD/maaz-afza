@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import './RsvpScreen.css'
 
-const BG_SRC = `/images/${encodeURIComponent('Page 15.png')}`
+const BG_SRC = '/images/page-15.webp'
 
 const EVENTS = [
   { id: 'manjha', label: 'Manjha (27 Jan 2027)' },

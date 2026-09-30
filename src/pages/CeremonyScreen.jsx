@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import './CeremonyScreen.css'
 
-const BG_SRC = `/images/${encodeURIComponent('Page 5 V1.png')}`
+const BG_SRC = '/images/page-05.webp'
 
 function Rule({ place }) {
   return (

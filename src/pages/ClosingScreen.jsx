@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import GoldDust from '../components/GoldDust.jsx'
 import './ClosingScreen.css'
 
-const BG_SRC = `/images/${encodeURIComponent('Page 16.png')}`
+const BG_SRC = '/images/page-16.webp'
 
 export default function ClosingScreen({ onBack, active = true }) {
   const [ready, setReady] = useState(false)

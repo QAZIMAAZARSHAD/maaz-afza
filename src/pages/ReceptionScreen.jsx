@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import GoldDust from '../components/GoldDust.jsx'
 import './ReceptionScreen.css'
 
-const BG_SRC = `/images/${encodeURIComponent('Page 10 V1.png')}`
+const BG_SRC = '/images/page-10.webp'
 
 export default function ReceptionScreen({ onContinue, onBack, chapter = 'Chapter III', active = true }) {
   const [ready, setReady] = useState(false)

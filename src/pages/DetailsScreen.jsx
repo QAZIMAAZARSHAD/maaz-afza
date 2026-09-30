@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import './DetailsScreen.css'
 
-const BG_SRC = `/images/${encodeURIComponent('Page 6 V1.png')}`
+const BG_SRC = '/images/page-06.webp'
 
 const MAPS_URL =
   'https://www.google.com/maps/search/?api=1&query=126%20Bandariya%20Bagh%2C%20Ghosiyana%2C%20Deen%20Dayal%20Upadhyay%20Nagar%2C%20Bahraich'

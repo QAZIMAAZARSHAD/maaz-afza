@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import './ReceptionDetailsScreen.css'
 
-const BG_SRC = `/images/${encodeURIComponent('Page 12 V1.png')}`
+const BG_SRC = '/images/page-12.webp'
 
 const MAPS_URL =
   'https://www.google.com/maps/search/?api=1&query=Hotel%20Awadh%20International%2C%20Faizabad%20Road%2C%20Near%20Indira%20Canal%2C%20Gomti%20Nagar%2C%20Lucknow%20226028'

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import './EveningScreen.css'
 
-const BG_SRC = `/images/${encodeURIComponent('Page 11 V1.png')}`
+const BG_SRC = '/images/page-11.webp'
 
 export default function EveningScreen({ onContinue, onBack, active = true }) {
   const [ready, setReady] = useState(false)

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import GoldDust from '../components/GoldDust.jsx'
 import './ManjhaScreen.css'
 
-const BG_SRC = `/images/${encodeURIComponent('Page 4 V1.png')}`
+const BG_SRC = '/images/page-04.webp'
 
 function Crest() {
   return (

@@ -1,11 +1,11 @@
-const img = (name) => `/images/${encodeURIComponent(name)}`
+import { ARTWORK } from './artwork.js'
 
 export const INVITE_VERSIONS = [
   {
     id: 'v1',
     label: 'V1',
     title: 'All events',
-    bg: img('Page 3 V1.png'),
+    bg: ARTWORK.inviteV1,
     layout: 'three',
     invite:
       'Would be delighted to have the pleasure of your company at the wedding of her grandson',
@@ -22,7 +22,7 @@ export const INVITE_VERSIONS = [
     id: 'v2',
     label: 'V2',
     title: 'Manjha + Reception',
-    bg: img('Page 3 V2.png'),
+    bg: ARTWORK.inviteV2,
     layout: 'two',
     invite:
       'Would be delighted to have the pleasure of your company at the wedding of her grandson',
@@ -38,7 +38,7 @@ export const INVITE_VERSIONS = [
     id: 'v3',
     label: 'V3',
     title: 'Wedding + Reception',
-    bg: img('Page 3 V2.png'),
+    bg: ARTWORK.inviteV2,
     layout: 'two',
     invite:
       'Would be delighted to have the pleasure of your company at the wedding of her grandson',
@@ -54,7 +54,7 @@ export const INVITE_VERSIONS = [
     id: 'v4',
     label: 'V4',
     title: 'Reception only',
-    bg: img('Page 3 V3.png'),
+    bg: ARTWORK.inviteV3,
     layout: 'one',
     invite:
       'Would be delighted to have the pleasure of your company at the wedding reception of her grandson',

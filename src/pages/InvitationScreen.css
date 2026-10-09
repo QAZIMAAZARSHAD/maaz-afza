@@ -167,7 +167,7 @@
 }
 
 .invite__parents {
-  margin-top: 0.65cqi;
+  margin-top: 1.25cqi;
   font-family: 'Cinzel', serif;
   font-size: clamp(8px, 2.05cqi, 9.5px);
   letter-spacing: 0.14em;
@@ -182,7 +182,7 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  margin: 0.85cqi 0 0.2cqi;
+  margin: 1.15cqi 0 0.45cqi;
   font-family: 'Great Vibes', cursive;
   font-size: clamp(22px, 6.1cqi, 28px);
   line-height: 0.85;

@@ -37,21 +37,6 @@ function Rule({ place }) {
   )
 }
 
-function Knot({ place }) {
-  return (
-    <svg className={`manjha__knot manjha__knot--${place}`} viewBox="0 0 22 22" aria-hidden="true">
-      <path
-        fill="currentColor"
-        d="M11 1.2 13.1 8.2 20.6 11 13.1 13.8 11 20.8 8.9 13.8 1.4 11 8.9 8.2z"
-      />
-      <path
-        fill="#e7d7a4"
-        d="M11 8.2 12.1 10.2 14.2 11 12.1 11.8 11 13.8 9.9 11.8 7.8 11 9.9 10.2z"
-      />
-    </svg>
-  )
-}
-
 export default function ManjhaScreen({ onContinue, onBack, chapter = 'Chapter I', active = true }) {
   const [ready, setReady] = useState(false)
   const [leaving, setLeaving] = useState(false)
@@ -140,7 +125,7 @@ export default function ManjhaScreen({ onContinue, onBack, chapter = 'Chapter I'
         <Rule place="below" />
         <h1 className="manjha__title">Manjha</h1>
         <Rule place="title" />
-        <p className="manjha__date">27 Jan 2027</p>
+        <p className="manjha__date">26 Jan 2027</p>
 
         <button className="manjha__next" type="button" onClick={handleContinue} aria-label="Continue">
           <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -154,14 +139,6 @@ export default function ManjhaScreen({ onContinue, onBack, chapter = 'Chapter I'
             />
           </svg>
         </button>
-
-        <Knot place="above" />
-        <p className="manjha__footer">
-          Traditions bring
-          <br />
-          us closer
-        </p>
-        <Knot place="below" />
       </div>
 
       <div className="manjha__grain" />

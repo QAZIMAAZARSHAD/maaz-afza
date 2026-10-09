@@ -61,10 +61,11 @@
 
 .baraat__invite {
   top: 33.4%;
-  font-size: clamp(10px, 2.45cqi, 13px);
-  letter-spacing: 0.34em;
-  padding-left: 0.34em;
-  line-height: 1.85;
+  width: 92%;
+  font-size: clamp(10px, 2.35cqi, 13px);
+  letter-spacing: 0.18em;
+  padding-left: 0.18em;
+  line-height: 1.45;
 }
 
 .baraat__of {
@@ -88,10 +89,12 @@
 }
 
 .baraat__date {
-  top: 60.4%;
+  top: 63.6%;
   font-size: clamp(12px, 2.85cqi, 15px);
-  letter-spacing: 0.36em;
-  padding-left: 0.36em;
+  letter-spacing: 0.16em;
+  padding-left: 0.16em;
+  line-height: 2.45;
+  white-space: normal;
   font-variant-numeric: lining-nums;
   font-feature-settings: 'lnum' 1;
 }

@@ -12,7 +12,7 @@ export const INVITE_VERSIONS = [
     note: 'Your presence will make this occasion even more special for us.',
     notePosition: 'mid',
     events: [
-      { name: 'Manjha', date: '27 Jan 2027', x: '22.02%' },
+      { name: 'Manjha', date: '26 Jan 2027', x: '22.02%' },
       { name: 'Wedding', date: '28 Jan 2027', x: '49.84%' },
       { name: 'Reception', date: '30 Jan 2027', x: '77.72%' },
     ],
@@ -29,7 +29,7 @@ export const INVITE_VERSIONS = [
     note: 'Your presence and blessings are warmly invited as we celebrate this special journey.',
     notePosition: 'mid',
     events: [
-      { name: 'Manjha', date: '27 Jan 2027', x: '32.2%' },
+      { name: 'Manjha', date: '26 Jan 2027', x: '32.2%' },
       { name: 'Reception', date: '30 Jan 2027', x: '67.4%' },
     ],
     footer: 'We look forward to\ncelebrating with you.',

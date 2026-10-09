@@ -10,13 +10,13 @@ const EVENTS = [
   {
     y: '22.65%',
     label: 'Gather at residence',
-    time: '5:00 PM',
+    time: '1:00 PM',
     note: '126, Bandariya Bagh, Ghosiyana,\nDeen Dayal Upadhyay Nagar, Bahraich',
   },
   {
     y: '33%',
     label: 'Baraat departure',
-    time: '6:00 PM',
+    time: '2:00 PM',
   },
   {
     y: '40.71%',
@@ -26,22 +26,22 @@ const EVENTS = [
   {
     y: '48.79%',
     label: 'Baraat arrival',
-    time: '8:00 PM',
+    time: '7:00 PM',
   },
   {
     y: '56.03%',
     label: 'Nikah',
-    time: '8:30 PM',
+    time: '7:30 PM',
   },
   {
     y: '63.14%',
     label: 'Dinner',
-    time: '9:30 PM',
+    time: '8:00 PM',
   },
   {
     y: '70.2%',
     label: 'Baraat return',
-    time: '11:30 PM',
+    time: '10:00 PM',
   },
 ]
 

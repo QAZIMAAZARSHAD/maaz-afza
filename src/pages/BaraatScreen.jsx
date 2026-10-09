@@ -84,14 +84,14 @@ export default function BaraatScreen({ onContinue, onBack, active = true }) {
       <div className="baraat__bg" style={{ backgroundImage: `url("${BG_SRC}")` }} />
 
       <div className="baraat__layer">
-        <p className="baraat__invite">
-          You are warmly invited
-          <br />
-          to
-        </p>
+        <p className="baraat__invite">You are warmly invited to the</p>
         <p className="baraat__of">Baraat of</p>
         <h1 className="baraat__name">Qazi Maaz Arshad</h1>
-        <p className="baraat__date">28 January 2027</p>
+        <p className="baraat__date">
+          Thursday
+          <br />
+          28 January 2027
+        </p>
       </div>
 
       <button className="baraat__scroll" type="button" onClick={handleContinue}>

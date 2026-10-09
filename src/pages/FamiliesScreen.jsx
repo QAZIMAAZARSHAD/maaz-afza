@@ -4,6 +4,7 @@ import './FamiliesScreen.css'
 const BG_SRC = '/images/page-14.webp'
 
 const NAMES = [
+  'Abdul Ahad Abbasi',
   'Khalid Islam',
   'Abdul Mubeen Khan',
   'Rashid Islam',
@@ -15,7 +16,10 @@ const NAMES = [
   'Hammad Masood',
 ]
 
-const GROUPS = [NAMES.slice(0, 3), NAMES.slice(3, 6), NAMES.slice(6, 9)]
+const NOTES = [
+  ['Mele mamu ki shaadi mein zalool zalool aana', 'Haniya'],
+  ['Eagerly waiting for you', 'Sanjay'],
+]
 
 export default function FamiliesScreen({ onContinue, onBack, active = true }) {
   const [ready, setReady] = useState(false)
@@ -98,14 +102,24 @@ export default function FamiliesScreen({ onContinue, onBack, active = true }) {
       <div className="families__bg" style={{ backgroundImage: `url("${BG_SRC}")` }} />
 
       <div className="families__layer">
-        <div className="families__names">
-          {GROUPS.map((group) => (
-            <ol className="families__group" key={group[0]}>
-              {group.map((name) => (
-                <li key={name}>{name}</li>
-              ))}
-            </ol>
-          ))}
+        <div className="families__panel">
+          <ol className="families__names">
+            {NAMES.map((name) => (
+              <li key={name}>{name}</li>
+            ))}
+          </ol>
+          <div className="families__rule" aria-hidden="true">
+            <i />
+            <b />
+            <i />
+          </div>
+          <div className="families__notes">
+            {NOTES.map(([line, name]) => (
+              <p className="families__note" key={name}>
+                “{line}” <em>- {name}</em>
+              </p>
+            ))}
+          </div>
         </div>
       </div>
 

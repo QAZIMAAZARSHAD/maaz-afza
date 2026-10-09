@@ -4,7 +4,7 @@ import './RsvpScreen.css'
 const BG_SRC = '/images/page-15.webp'
 
 const EVENTS = [
-  { id: 'manjha', label: 'Manjha (27 Jan 2027)' },
+  { id: 'manjha', label: 'Manjha (26 Jan 2027)' },
   { id: 'baraat', label: 'Baraat (28 Jan 2027)' },
   { id: 'wedding', label: 'Wedding (28 Jan 2027)' },
   { id: 'reception', label: 'Reception (30 Jan 2027)' },

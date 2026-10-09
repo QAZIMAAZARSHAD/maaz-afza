@@ -106,12 +106,6 @@ export default function WeddingScreen({ onContinue, onBack, chapter = 'Chapter I
             />
           </svg>
         </button>
-
-        <p className="wedding__sign">
-          Love leads
-          <br />
-          us forward
-        </p>
       </div>
 
       <div className="wedding__grain" />

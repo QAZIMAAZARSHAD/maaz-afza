@@ -4,7 +4,7 @@ import './ReceptionDetailsScreen.css'
 const BG_SRC = '/images/page-12.webp'
 
 const MAPS_URL =
-  'https://www.google.com/maps/search/?api=1&query=Hotel%20Awadh%20International%2C%20Faizabad%20Road%2C%20Near%20Indira%20Canal%2C%20Gomti%20Nagar%2C%20Lucknow%20226028'
+  'https://maps.app.goo.gl/eEh2PQmpxd7X28bNA'
 
 export default function ReceptionDetailsScreen({ onContinue, onBack, active = true }) {
   const [ready, setReady] = useState(false)
@@ -129,11 +129,11 @@ export default function ReceptionDetailsScreen({ onContinue, onBack, active = tr
           </svg>
         </div>
         <p className="feast__venue-label">Venue</p>
-        <p className="feast__hotel">Hotel Awadh International</p>
+        <p className="feast__hotel">Shagun Palace</p>
         <p className="feast__address">
-          Faizabad Road, Near Indira Canal,
+          Lucknow Road, Near Banjari Mod,
           <br />
-          Gomti Nagar, Lucknow - 226028
+          Saryu Nagar, Bahraich - 271802
         </p>
 
         <a className="feast__directions" href={MAPS_URL} target="_blank" rel="noreferrer">

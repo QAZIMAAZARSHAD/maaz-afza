@@ -4,21 +4,21 @@ import './DetailsScreen.css'
 const BG_SRC = '/images/page-06.webp'
 
 const MAPS_URL =
-  'https://www.google.com/maps/search/?api=1&query=126%20Bandariya%20Bagh%2C%20Ghosiyana%2C%20Deen%20Dayal%20Upadhyay%20Nagar%2C%20Bahraich'
+  'https://maps.app.goo.gl/tR3ivTqmx3ykW8ACA'
 
 const EVENTS = [
   {
     n: '1',
     y: '29.9%',
     title: 'Gathering',
-    time: '4:00 PM',
+    time: '5:00 PM',
     note: 'Guests are requested to arrive',
   },
   {
     n: '2',
     y: '40.72%',
     title: 'Manjha Ceremony',
-    time: '5:00 PM',
+    time: '6:00 PM',
     note: 'Music and family festivities',
   },
   {

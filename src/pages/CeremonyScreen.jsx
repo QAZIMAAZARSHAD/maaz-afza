@@ -101,16 +101,10 @@ export default function CeremonyScreen({ onContinue, onBack, active = true }) {
         <h1 className="ceremony__title">Manjha Ceremony</h1>
         <p className="ceremony__of">of</p>
         <p className="ceremony__name">Qazi Maaz Arshad</p>
-        <Rule place="mid" />
-        <p className="ceremony__body">
-          A celebration of love, traditions
-          <br />
-          and new beginnings
-        </p>
         <Rule place="date" />
         <p className="ceremony__when">
           <span className="ceremony__day">Tuesday</span>
-          <span className="ceremony__date">27 Jan 2027</span>
+          <span className="ceremony__date">26 Jan 2027</span>
         </p>
 
       </div>

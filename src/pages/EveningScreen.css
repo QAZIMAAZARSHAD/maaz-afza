@@ -94,28 +94,28 @@
 }
 
 .evening__script--amp {
-  top: 46.8%;
+  top: 49.8%;
   font-size: clamp(28px, 7.4cqi, 40px);
 }
 
 .evening__name {
-  top: 42.4%;
+  top: 45%;
   font-size: clamp(28px, 7.15cqi, 40px);
 }
 
 .evening__name--bride {
-  top: 51.2%;
+  top: 54.6%;
 }
 
 .evening__day {
-  top: 58.6%;
+  top: 61.2%;
   font-size: clamp(9px, 2.15cqi, 12px);
   letter-spacing: 0.42em;
   padding-left: 0.42em;
 }
 
 .evening__date {
-  top: 62.8%;
+  top: 65.4%;
   font-family: 'Cinzel', serif;
   font-weight: 500;
   text-transform: uppercase;

@@ -15,7 +15,7 @@ import FamiliesScreen from './pages/FamiliesScreen.jsx'
 import RsvpScreen from './pages/RsvpScreen.jsx'
 import ClosingScreen from './pages/ClosingScreen.jsx'
 import { journeyFromPath } from './data/journeys.js'
-import { imagesForPage, preloadImages } from './data/artwork.js'
+import { ARTWORK, imagesForPage, preloadImages } from './data/artwork.js'
 import './motion.css'
 
 export default function App() {
@@ -28,8 +28,9 @@ export default function App() {
 
   useEffect(() => {
     const index = journey.pages.indexOf(page)
-    const ids = [page, journey.pages[index + 1], journey.pages[index - 1]].filter(Boolean)
-    preloadImages(ids.flatMap((id) => imagesForPage(id, journey.id)))
+    const ids = [page, journey.pages[index + 1]].filter(Boolean)
+    const urls = ids.flatMap((id) => imagesForPage(id, journey.id))
+    preloadImages(page === 'cover' ? urls : urls.filter((url) => url !== ARTWORK.couple))
   }, [page, journey])
 
   function go(id, delta) {

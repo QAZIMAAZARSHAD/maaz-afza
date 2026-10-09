@@ -14,13 +14,6 @@ export default function InvitationScreen({ onContinue, onBack, versionId, active
   const touchY = useRef(0)
 
   useEffect(() => {
-    INVITE_VERSIONS.forEach((item) => {
-      const preload = new Image()
-      preload.src = item.bg
-    })
-  }, [])
-
-  useEffect(() => {
     const img = new Image()
     img.src = version.bg
     const markReady = () => setReady(true)

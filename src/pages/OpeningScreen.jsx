@@ -10,6 +10,7 @@ export default function OpeningScreen({ onEnter, active = true }) {
 
   useEffect(() => {
     const img = new Image()
+    img.fetchPriority = 'high'
     img.src = BG_SRC
     const markReady = () => setReady(true)
     if (img.complete) markReady()

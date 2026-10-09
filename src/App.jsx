@@ -23,6 +23,7 @@ export default function App() {
   const [page, setPage] = useState(journey.pages[0])
   const [outgoing, setOutgoing] = useState(null)
   const fadeTimer = useRef(0)
+  const musicRef = useRef(null)
 
   useEffect(() => () => window.clearTimeout(fadeTimer.current), [])
 
@@ -32,6 +33,13 @@ export default function App() {
     const urls = ids.flatMap((id) => imagesForPage(id, journey.id))
     preloadImages(page === 'cover' ? urls : urls.filter((url) => url !== ARTWORK.couple))
   }, [page, journey])
+
+  function beginCelebration() {
+    const music = musicRef.current
+    if (!music) return
+    music.loop = true
+    music.play().catch(() => {})
+  }
 
   function go(id, delta) {
     const index = journey.pages.indexOf(id)
@@ -44,7 +52,17 @@ export default function App() {
   }
 
   function renderPage(id, active) {
-    if (id === 'opening') return <OpeningScreen active={active} onEnter={() => go('opening', 1)} />
+    if (id === 'opening') {
+      return (
+        <OpeningScreen
+          active={active}
+          onEnter={() => {
+            beginCelebration()
+            go('opening', 1)
+          }}
+        />
+      )
+    }
     if (id === 'cover') {
       return (
         <CoverScreen
@@ -176,6 +194,7 @@ export default function App() {
   return (
     <div className="app-shell" data-page={page} data-version={journey.id}>
       <div className="app-shell__ambient" aria-hidden="true" />
+      <audio ref={musicRef} src="/audio/song.m4a" loop preload="none" />
       <main className="phone-stage">
         {shown.map((id) => (
           <div

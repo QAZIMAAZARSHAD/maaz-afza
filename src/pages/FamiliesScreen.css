@@ -48,8 +48,8 @@
 
 .families__names {
   position: absolute;
-  left: 8%;
-  right: 8%;
+  left: 4%;
+  right: 12%;
   top: 39%;
   bottom: 41%;
   display: grid;

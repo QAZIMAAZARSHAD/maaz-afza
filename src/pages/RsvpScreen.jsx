@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import './RsvpScreen.css'
 
 const BG_SRC = '/images/page-15.webp'
+const RSVP_URL =
+  'https://script.google.com/macros/s/AKfycbzptsyv0VV06kMRu-DpjYCPGZ6QyyqP6TG63TRpoz_PDGedh8jVGF-m_C4JIbvtDxylIQ/exec'
 
 const EVENTS = [
   { id: 'manjha', label: 'Manjha (26 Jan 2027)' },
@@ -40,6 +42,7 @@ export default function RsvpScreen({ onContinue, onBack, eventIds, active = true
   const [events, setEvents] = useState([])
   const [guests, setGuests] = useState(1)
   const [message, setMessage] = useState('')
+  const [sending, setSending] = useState(false)
   const [error, setError] = useState('')
   const [sent, setSent] = useState(false)
   const leavingRef = useRef(false)
@@ -126,7 +129,7 @@ export default function RsvpScreen({ onContinue, onBack, eventIds, active = true
     setError('')
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault()
     const trimmed = name.trim()
     if (!trimmed) {
@@ -137,8 +140,34 @@ export default function RsvpScreen({ onContinue, onBack, eventIds, active = true
       setError('Please choose the events you will attend.')
       return
     }
+    const attending =
+      choices.length === 1
+        ? choices[0].label
+        : choices
+            .filter((item) => events.includes(item.id))
+            .map((item) => item.label)
+            .join(', ')
     setError('')
-    setSent(true)
+    setSending(true)
+    try {
+      await fetch(RSVP_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({
+          name: trimmed,
+          events: attending,
+          guests,
+          message: message.trim(),
+          page: window.location.pathname,
+        }),
+      })
+      setSent(true)
+    } catch {
+      setError('We could not send that just now. Please try again.')
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -237,8 +266,8 @@ export default function RsvpScreen({ onContinue, onBack, eventIds, active = true
 
             <Flourish />
 
-            <button className="rsvp__send" type="submit">
-              <span>Send your response</span>
+            <button className="rsvp__send" type="submit" disabled={sending}>
+              <span>{sending ? 'Sending…' : 'Send your response'}</span>
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M5 12h12M13 6l6 6-6 6" />
               </svg>

@@ -8,11 +8,11 @@
 
 [[edge_functions]]
   function = "share-meta"
-  path = "/manjha"
+  path = "/walima"
 
 [[edge_functions]]
   function = "share-meta"
-  path = "/manjha/"
+  path = "/walima/"
 
 [[edge_functions]]
   function = "share-meta"
@@ -32,7 +32,17 @@
 
 [[redirects]]
   from = "/manjha"
-  to = "/manjha/index.html"
+  to = "/walima"
+  status = 301
+
+[[redirects]]
+  from = "/manjha/"
+  to = "/walima"
+  status = 301
+
+[[redirects]]
+  from = "/walima"
+  to = "/walima/index.html"
   status = 200
 
 [[redirects]]

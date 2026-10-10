@@ -10,7 +10,7 @@ const root = fileURLToPath(new URL('../../public', import.meta.url))
 describe('journeys', () => {
   it('maps each public link to the right guest version', () => {
     expect(journeyFromPath('/').id).toBe('v1')
-    expect(journeyFromPath('/manjha').id).toBe('v2')
+    expect(journeyFromPath('/walima').id).toBe('v2')
     expect(journeyFromPath('/wedding').id).toBe('v3')
     expect(journeyFromPath('/reception').id).toBe('v4')
     expect(journeyFromPath('/reception/').id).toBe('v4')

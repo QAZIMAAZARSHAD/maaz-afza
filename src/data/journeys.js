@@ -74,7 +74,7 @@ export const JOURNEYS = {
   },
   v2: {
     id: 'v2',
-    path: '/manjha',
+    path: '/walima',
     title: 'Manjha and reception',
     pages: PAGES.v2,
     chapters: {

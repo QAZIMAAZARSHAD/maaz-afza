@@ -46,7 +46,7 @@ test('desktop keeps a single framed stage', async ({ page }) => {
 })
 
 test('guest links open the matching journey', async ({ page }) => {
-  await page.goto('/manjha')
+  await page.goto('/walima')
   await expect(page.locator('.app-shell')).toHaveAttribute('data-version', 'v2')
   await page.goto('/wedding')
   await expect(page.locator('.app-shell')).toHaveAttribute('data-version', 'v3')

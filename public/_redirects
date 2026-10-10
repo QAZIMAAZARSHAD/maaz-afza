@@ -1,4 +1,6 @@
-/manjha    /manjha/index.html    200
+/manjha    /walima               301
+/manjha/   /walima               301
+/walima    /walima/index.html    200
 /wedding   /wedding/index.html   200
 /reception /reception/index.html 200
 /*         /index.html           200

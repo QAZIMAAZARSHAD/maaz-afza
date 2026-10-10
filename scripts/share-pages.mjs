@@ -6,7 +6,7 @@ const rootTitle = 'Maaz &amp; Afza | Wedding Invitation'
 const receptionTitle = 'Maaz &amp; Afza | Wedding Reception Invitation'
 
 const pages = {
-  manjha: {
+  walima: {
     title: receptionTitle,
   },
   wedding: {

@@ -2,28 +2,23 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 
 const html = readFileSync('dist/index.html', 'utf8')
 
+const rootTitle = 'Maaz &amp; Afza | Wedding Invitation'
+const receptionTitle = 'Maaz &amp; Afza | Wedding Reception Invitation'
+
 const pages = {
   manjha: {
-    title: 'Maaz weds Afza - Manjha',
-    description: 'You are warmly invited to the manjha of Qazi Maaz Arshad.',
+    title: receptionTitle,
   },
   wedding: {
-    title: 'Maaz weds Afza - Wedding',
-    description: 'You are warmly invited to the wedding of Qazi Maaz Arshad and Afza Aslam.',
+    title: rootTitle,
   },
   reception: {
-    title: 'Maaz weds Afza - Reception',
-    description: 'You are warmly invited to the wedding reception of Qazi Maaz Arshad and Afza Aslam.',
+    title: receptionTitle,
   },
 }
 
-const rootTitle = 'Maaz weds Afza - A new chapter begins'
-const rootDescription = 'You are warmly invited to the celebrations of Qazi Maaz Arshad and Afza Aslam.'
-
 for (const [path, copy] of Object.entries(pages)) {
-  const page = html
-    .replaceAll(rootTitle, copy.title)
-    .replaceAll(rootDescription, copy.description)
+  const page = html.replaceAll(rootTitle, copy.title)
   mkdirSync(`dist/${path}`, { recursive: true })
   writeFileSync(`dist/${path}/index.html`, page)
 }

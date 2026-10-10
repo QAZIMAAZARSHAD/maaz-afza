@@ -2,6 +2,34 @@
   command = "npm run build"
   publish = "dist"
 
+[[edge_functions]]
+  function = "share-meta"
+  path = "/"
+
+[[edge_functions]]
+  function = "share-meta"
+  path = "/manjha"
+
+[[edge_functions]]
+  function = "share-meta"
+  path = "/manjha/"
+
+[[edge_functions]]
+  function = "share-meta"
+  path = "/wedding"
+
+[[edge_functions]]
+  function = "share-meta"
+  path = "/wedding/"
+
+[[edge_functions]]
+  function = "share-meta"
+  path = "/reception"
+
+[[edge_functions]]
+  function = "share-meta"
+  path = "/reception/"
+
 [[redirects]]
   from = "/manjha"
   to = "/manjha/index.html"

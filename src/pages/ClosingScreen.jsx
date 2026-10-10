@@ -3,9 +3,11 @@ import GoldDust from '../components/GoldDust.jsx'
 import './ClosingScreen.css'
 
 const BG_SRC = '/images/page-16.webp'
+const NAMES = 'Mr. & Mrs. Arshad Islam'
 
 export default function ClosingScreen({ onBack, active = true }) {
   const [ready, setReady] = useState(false)
+  const [typed, setTyped] = useState(0)
   const leavingRef = useRef(false)
   const sectionRef = useRef(null)
   const touchY = useRef(0)
@@ -17,6 +19,23 @@ export default function ClosingScreen({ onBack, active = true }) {
     if (img.complete) markReady()
     else img.onload = markReady
   }, [])
+
+  useEffect(() => {
+    if (!ready || !active) return undefined
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduce) {
+      setTyped(NAMES.length)
+      return undefined
+    }
+    setTyped(0)
+    let count = 0
+    const timer = window.setInterval(() => {
+      count += 1
+      setTyped(count)
+      if (count >= NAMES.length) window.clearInterval(timer)
+    }, 78)
+    return () => window.clearInterval(timer)
+  }, [ready, active])
 
   function handleBack() {
     if (leavingRef.current) return
@@ -73,7 +92,10 @@ export default function ClosingScreen({ onBack, active = true }) {
 
       <div className="closing__layer">
         <p className="closing__love">With love</p>
-        <p className="closing__names">Maaz &amp; Afza</p>
+        <p className={`closing__names${typed >= NAMES.length ? ' is-typed' : ''}`}>
+          <span className="closing__names-ghost" aria-hidden="true">{NAMES}</span>
+          <span className="closing__names-live">{NAMES.slice(0, typed)}</span>
+        </p>
       </div>
 
       <div className="closing__grain" />

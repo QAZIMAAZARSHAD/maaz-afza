@@ -115,6 +115,13 @@
 
 .families__note {
   margin: 0;
+}
+
+.families__notes .families__note:first-child {
+  margin-top: 1.8cqi;
+}
+
+.families__note {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-weight: 500;

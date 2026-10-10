@@ -6,19 +6,19 @@ const BG_SRC = '/images/page-14.webp'
 const NAMES = [
   'Abdul Ahad Abbasi',
   'Khalid Islam',
+  'Mohd. Humayun Shakeel',
+  'Owais Khan',
+  'Ayan Sagheer',
   'Abdul Mubeen Khan',
   'Rashid Islam',
-  'Mohd. Humayun Shakeel',
   'Ahmad Syedain',
-  'Owais Khan',
   'Ali Ukkasha',
-  'Ayan Sagheer',
   'Hammad Masood',
 ]
 
 const NOTES = [
   ['Mele mamu ki shaadi mein zalool zalool aana', 'Haniya'],
-  ['Eagerly waiting for you', 'Sanjay'],
+  ['Ecstatic to welcome you all', 'Sanjay'],
 ]
 
 export default function FamiliesScreen({ onContinue, onBack, active = true }) {

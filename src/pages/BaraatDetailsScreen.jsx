@@ -4,44 +4,44 @@ import './BaraatDetailsScreen.css'
 const BG_SRC = '/images/page-09.webp'
 
 const MAPS_URL =
-  'https://www.google.com/maps/search/?api=1&query=The%20Royal%20Orchid%20Banquet%2C%20NH%2027%2C%20Unnav%20Lucknow%20Road%2C%20Unnav%2C%20Uttar%20Pradesh%20209801'
+  'https://www.google.com/maps/search/?api=1&query=The%20Royal%20Orchid%20Banquet%2C%20NH%2027%2C%20Unnao%20Lucknow%20Road%2C%20Unnao%2C%20Uttar%20Pradesh%20209801'
 
 const EVENTS = [
   {
     y: '22.65%',
     label: 'Gather at residence',
-    time: '1:00 PM',
+    time: '11:00 AM',
     note: '126, Bandariya Bagh, Ghosiyana,\nDeen Dayal Upadhyay Nagar, Bahraich',
   },
   {
     y: '33%',
     label: 'Baraat departure',
-    time: '2:00 PM',
+    time: '12:00 PM',
   },
   {
     y: '40.71%',
     label: 'Journey',
-    detail: 'From Bahraich to Unnav',
+    detail: 'From Bahraich to Unnao',
   },
   {
     y: '48.79%',
     label: 'Baraat arrival',
-    time: '7:00 PM',
+    time: '4:00 PM',
   },
   {
     y: '56.03%',
     label: 'Nikah',
-    time: '7:30 PM',
+    time: '5:30 PM',
   },
   {
     y: '63.14%',
     label: 'Dinner',
-    time: '8:00 PM',
+    time: '7:00 PM',
   },
   {
     y: '70.2%',
     label: 'Baraat return',
-    time: '10:00 PM',
+    time: '9:00 PM',
   },
 ]
 
@@ -142,11 +142,9 @@ export default function BaraatDetailsScreen({ onContinue, onBack, active = true 
 
         <div className="schedule__venue">
           <p className="schedule__venue-label">Venue</p>
-          <p className="schedule__venue-name">The Royal Orchid Banquet</p>
+          <p className="schedule__venue-name">TBD</p>
           <p className="schedule__venue-address">
-            NH 27, Unnav – Lucknow Road,
-            <br />
-            Unnav, Uttar Pradesh – 209801
+            Unnao, Uttar Pradesh – 209801
           </p>
         </div>
 

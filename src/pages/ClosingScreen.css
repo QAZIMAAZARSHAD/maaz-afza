@@ -72,36 +72,6 @@
   letter-spacing: 0.02em;
 }
 
-.closing__names-ghost {
-  visibility: hidden;
-}
-
-.closing__names-live {
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-.closing__names-live::after {
-  content: '';
-  display: inline-block;
-  width: 1px;
-  height: 0.85em;
-  margin-left: 0.12em;
-  vertical-align: -0.05em;
-  background: currentColor;
-  animation: closing-caret 0.9s steps(1) infinite;
-}
-
-.closing__names.is-typed .closing__names-live::after {
-  animation: none;
-  opacity: 0;
-}
-
-@keyframes closing-caret {
-  50% { opacity: 0; }
-}
-
 .closing.is-leaving .closing__layer {
   animation: closing-fade 0.7s ease forwards;
 }

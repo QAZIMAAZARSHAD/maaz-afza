@@ -30,11 +30,41 @@ export function imagesForPage(pageId, versionId = 'v1') {
   return src ? [src] : []
 }
 
-export function preloadImages(urls) {
+const queued = new Set()
+const pending = []
+let pumping = false
+
+export function preloadImages(urls, urgent = false) {
   if (typeof Image === 'undefined') return
+  const fresh = []
   for (const url of urls) {
-    const img = new Image()
-    img.decoding = 'async'
-    img.src = url
+    if (!url) continue
+    const waiting = pending.indexOf(url)
+    if (waiting >= 0) {
+      if (urgent) pending.splice(waiting, 1)
+      else continue
+    } else if (queued.has(url)) {
+      continue
+    }
+    queued.add(url)
+    fresh.push(url)
   }
+  if (urgent) pending.unshift(...fresh)
+  else pending.push(...fresh)
+  pump()
+}
+
+function pump() {
+  if (pumping || pending.length === 0) return
+  pumping = true
+  const url = pending.shift()
+  const img = new Image()
+  img.decoding = 'async'
+  const done = () => {
+    pumping = false
+    pump()
+  }
+  img.onload = done
+  img.onerror = done
+  img.src = url
 }

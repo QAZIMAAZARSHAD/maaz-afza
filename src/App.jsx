@@ -29,10 +29,25 @@ export default function App() {
 
   useEffect(() => {
     const index = journey.pages.indexOf(page)
-    const ids = [page, journey.pages[index + 1]].filter(Boolean)
-    const urls = ids.flatMap((id) => imagesForPage(id, journey.id))
-    preloadImages(page === 'cover' ? urls : urls.filter((url) => url !== ARTWORK.couple))
+    const next = journey.pages[index + 1]
+    const urls = [page, next]
+      .filter(Boolean)
+      .flatMap((id) => imagesForPage(id, journey.id))
+    preloadImages(page === 'cover' ? urls : urls.filter((url) => url !== ARTWORK.couple), true)
   }, [page, journey])
+
+  useEffect(() => {
+    const urls = journey.pages
+      .flatMap((id) => imagesForPage(id, journey.id))
+      .filter((url) => url !== ARTWORK.opening && url !== ARTWORK.couple)
+    const start = () => preloadImages(urls)
+    if ('requestIdleCallback' in window) {
+      const id = window.requestIdleCallback(start, { timeout: 2000 })
+      return () => window.cancelIdleCallback(id)
+    }
+    const timer = window.setTimeout(start, 800)
+    return () => window.clearTimeout(timer)
+  }, [journey])
 
   function beginCelebration() {
     const music = musicRef.current

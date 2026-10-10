@@ -2,8 +2,8 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 
 const html = readFileSync('dist/index.html', 'utf8')
 
-const rootTitle = 'Maaz &amp; Afza | Wedding Invitation'
-const receptionTitle = 'Maaz &amp; Afza | Wedding Reception Invitation'
+const rootTitle = 'Maaz & Afza | Wedding Invitation'
+const receptionTitle = 'Maaz & Afza | Wedding Reception Invitation'
 
 const pages = {
   walima: {

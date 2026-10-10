@@ -4,7 +4,7 @@ import './DetailsScreen.css'
 const BG_SRC = '/images/page-06.webp'
 
 const MAPS_URL =
-  'https://maps.app.goo.gl/tR3ivTqmx3ykW8ACA'
+  'https://maps.app.goo.gl/XtHY24JzaTj9jTiM7?g_st=ac'
 
 const EVENTS = [
   {

@@ -28,6 +28,11 @@ export default function App() {
   useEffect(() => () => window.clearTimeout(fadeTimer.current), [])
 
   useEffect(() => {
+    document.title = journey.shareTitle
+    document.querySelector('meta[name="description"]')?.setAttribute('content', journey.shareDescription)
+  }, [journey])
+
+  useEffect(() => {
     const index = journey.pages.indexOf(page)
     const next = journey.pages[index + 1]
     const urls = [page, next]

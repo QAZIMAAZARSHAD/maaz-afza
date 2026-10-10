@@ -63,9 +63,9 @@
 
 .evening__kicker {
   top: 23.2%;
-  font-size: clamp(8px, 1.95cqi, 11px);
-  letter-spacing: 0.16em;
-  padding-left: 0.16em;
+  font-size: clamp(11px, 2.55cqi, 14px);
+  letter-spacing: 0.12em;
+  padding-left: 0.12em;
 }
 
 .evening__title,

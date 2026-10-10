@@ -69,6 +69,8 @@ export const JOURNEYS = {
       reception: 'Chapter III',
     },
     rsvpEvents: ['manjha', 'baraat', 'reception'],
+    shareTitle: 'Maaz weds Afza - A new chapter begins',
+    shareDescription: 'You are warmly invited to the celebrations of Qazi Maaz Arshad and Afza Aslam.',
   },
   v2: {
     id: 'v2',
@@ -80,6 +82,8 @@ export const JOURNEYS = {
       reception: 'Chapter II',
     },
     rsvpEvents: ['manjha', 'reception'],
+    shareTitle: 'Maaz weds Afza - Manjha',
+    shareDescription: 'You are warmly invited to the manjha of Qazi Maaz Arshad.',
   },
   v3: {
     id: 'v3',
@@ -91,6 +95,8 @@ export const JOURNEYS = {
       reception: 'Chapter II',
     },
     rsvpEvents: ['wedding', 'reception'],
+    shareTitle: 'Maaz weds Afza - Wedding',
+    shareDescription: 'You are warmly invited to the wedding of Qazi Maaz Arshad and Afza Aslam.',
   },
   v4: {
     id: 'v4',
@@ -101,6 +107,8 @@ export const JOURNEYS = {
       reception: null,
     },
     rsvpEvents: ['reception'],
+    shareTitle: 'Maaz weds Afza - Reception',
+    shareDescription: 'You are warmly invited to the wedding reception of Qazi Maaz Arshad and Afza Aslam.',
   },
 }
 

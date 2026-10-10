@@ -3,6 +3,21 @@
   publish = "dist"
 
 [[redirects]]
+  from = "/manjha"
+  to = "/manjha/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/wedding"
+  to = "/wedding/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/reception"
+  to = "/reception/index.html"
+  status = 200
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200

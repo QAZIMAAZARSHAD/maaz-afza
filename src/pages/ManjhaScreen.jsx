@@ -2,7 +2,9 @@ import { useEffect, useRef, useState } from 'react'
 import GoldDust from '../components/GoldDust.jsx'
 import './ManjhaScreen.css'
 
-const BG_SRC = '/images/page-04.webp'
+import { asset } from '../data/artwork.js'
+
+const BG_SRC = asset('/images/page-04.webp')
 
 function Crest() {
   return (

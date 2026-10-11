@@ -7,7 +7,7 @@ export default async (request, context) => {
   const image = `${url.origin}/share.jpg`
   const page = `${url.origin}${url.pathname}`
   let html = await response.text()
-  html = html.replaceAll('content="/share.jpg"', `content="${image}"`)
+  html = html.replaceAll(/content="[^"]*share\.jpg"/g, `content="${image}"`)
   if (!html.includes('property="og:url"')) {
     html = html.replace('</head>', `    <meta property="og:url" content="${page}" />\n  </head>`)
   }

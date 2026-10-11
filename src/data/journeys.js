@@ -116,7 +116,12 @@ const BY_PATH = Object.fromEntries(
   Object.values(JOURNEYS).map((journey) => [journey.path, journey]),
 )
 
+const ROUTES = new Set(['walima', 'wedding', 'reception', 'manjha'])
+
 export function journeyFromPath(pathname = window.location.pathname) {
-  const path = pathname.replace(/\/+$/, '') || '/'
+  const parts = pathname.split('/').filter(Boolean)
+  let key = parts.at(-1) === 'index.html' ? parts.at(-2) : parts.at(-1)
+  if (key === 'manjha') key = 'walima'
+  const path = ROUTES.has(key) ? `/${key}` : '/'
   return BY_PATH[path] ?? JOURNEYS.v1
 }

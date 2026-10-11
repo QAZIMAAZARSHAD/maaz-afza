@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import './EveningScreen.css'
 
-const BG_SRC = '/images/page-11.webp'
+import { asset } from '../data/artwork.js'
+
+const BG_SRC = asset('/images/page-11.webp')
 
 export default function EveningScreen({ onContinue, onBack, active = true }) {
   const [ready, setReady] = useState(false)

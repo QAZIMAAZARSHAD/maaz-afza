@@ -2,7 +2,9 @@ import { useEffect, useRef, useState } from 'react'
 import GoldDust from '../components/GoldDust.jsx'
 import './WeddingScreen.css'
 
-const BG_SRC = '/images/page-07.webp'
+import { asset } from '../data/artwork.js'
+
+const BG_SRC = asset('/images/page-07.webp')
 
 export default function WeddingScreen({ onContinue, onBack, chapter = 'Chapter II', active = true }) {
   const [ready, setReady] = useState(false)

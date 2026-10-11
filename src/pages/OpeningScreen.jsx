@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import GoldDust from '../components/GoldDust.jsx'
+import { asset } from '../data/artwork.js'
 import './OpeningScreen.css'
 
-const BG_SRC = '/images/page-01.webp'
+const BG_SRC = asset('/images/page-01.webp')
 
 export default function OpeningScreen({ onEnter, active = true }) {
   const [ready, setReady] = useState(false)

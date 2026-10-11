@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import './FamiliesScreen.css'
 
-const BG_SRC = '/images/page-14.webp'
+import { asset } from '../data/artwork.js'
+
+const BG_SRC = asset('/images/page-14.webp')
 
 const NAMES = [
   'Abdul Ahad Abbasi',

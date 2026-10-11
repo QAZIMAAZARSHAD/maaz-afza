@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import './RsvpScreen.css'
 
-const BG_SRC = '/images/page-15.webp'
+import { asset } from '../data/artwork.js'
+
+const BG_SRC = asset('/images/page-15.webp')
 const RSVP_URL =
   'https://script.google.com/macros/s/AKfycbzptsyv0VV06kMRu-DpjYCPGZ6QyyqP6TG63TRpoz_PDGedh8jVGF-m_C4JIbvtDxylIQ/exec'
 

@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import './DetailsScreen.css'
 
-const BG_SRC = '/images/page-06.webp'
+import { asset } from '../data/artwork.js'
+
+const BG_SRC = asset('/images/page-06.webp')
 
 const MAPS_URL =
   'https://maps.app.goo.gl/XtHY24JzaTj9jTiM7?g_st=ac'

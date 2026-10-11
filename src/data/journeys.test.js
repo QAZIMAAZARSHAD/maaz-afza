@@ -14,6 +14,9 @@ describe('journeys', () => {
     expect(journeyFromPath('/wedding').id).toBe('v3')
     expect(journeyFromPath('/reception').id).toBe('v4')
     expect(journeyFromPath('/reception/').id).toBe('v4')
+    expect(journeyFromPath('/manjha').id).toBe('v2')
+    expect(journeyFromPath('/maaz-afza/walima').id).toBe('v2')
+    expect(journeyFromPath('/maaz-afza').id).toBe('v1')
   })
 
   it('falls back to the full invitation for an unknown path', () => {

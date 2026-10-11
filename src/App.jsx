@@ -15,7 +15,7 @@ import FamiliesScreen from './pages/FamiliesScreen.jsx'
 import RsvpScreen from './pages/RsvpScreen.jsx'
 import ClosingScreen from './pages/ClosingScreen.jsx'
 import { journeyFromPath } from './data/journeys.js'
-import { ARTWORK, imagesForPage, preloadImages } from './data/artwork.js'
+import { ARTWORK, asset, imagesForPage, preloadImages } from './data/artwork.js'
 import './motion.css'
 
 export default function App() {
@@ -214,7 +214,7 @@ export default function App() {
   return (
     <div className="app-shell" data-page={page} data-version={journey.id}>
       <div className="app-shell__ambient" aria-hidden="true" />
-      <audio ref={musicRef} src="/audio/song.m4a" loop preload="none" />
+      <audio ref={musicRef} src={asset('/audio/song.m4a')} loop preload="none" />
       <main className="phone-stage">
         {shown.map((id) => (
           <div

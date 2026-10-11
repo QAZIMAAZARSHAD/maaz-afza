@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import './BaraatScreen.css'
 
-const BG_SRC = '/images/page-08.webp'
+import { asset } from '../data/artwork.js'
+
+const BG_SRC = asset('/images/page-08.webp')
 
 export default function BaraatScreen({ onContinue, onBack, active = true }) {
   const [ready, setReady] = useState(false)

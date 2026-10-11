@@ -1,3 +1,13 @@
+const NESTED = new Set(['walima', 'wedding', 'reception', 'manjha'])
+
+export function asset(path) {
+  const file = String(path).replace(/^\//, '')
+  if (typeof window === 'undefined') return `/${file}`
+  const parts = window.location.pathname.split('/').filter(Boolean)
+  const nested = NESTED.has(parts.at(-1)) || NESTED.has(parts.at(-2))
+  return `${nested ? '../' : './'}${file}`
+}
+
 export const ARTWORK = {
   opening: '/images/page-01.webp',
   cover: '/images/page-02.webp',
@@ -66,5 +76,5 @@ function pump() {
   }
   img.onload = done
   img.onerror = done
-  img.src = url
+  img.src = asset(url)
 }

@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import './BaraatDetailsScreen.css'
 
-const BG_SRC = '/images/page-09.webp'
+import { asset } from '../data/artwork.js'
+
+const BG_SRC = asset('/images/page-09.webp')
 
 const MAPS_URL =
   'https://www.google.com/maps/search/?api=1&query=The%20Royal%20Orchid%20Banquet%2C%20NH%2027%2C%20Unnao%20Lucknow%20Road%2C%20Unnao%2C%20Uttar%20Pradesh%20209801'

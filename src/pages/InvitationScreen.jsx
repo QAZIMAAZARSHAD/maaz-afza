@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import GoldDust from '../components/GoldDust.jsx'
+import { asset } from '../data/artwork.js'
 import { INVITE_VERSIONS } from '../data/invitationVersions.js'
 import './InvitationScreen.css'
 
@@ -15,7 +16,7 @@ export default function InvitationScreen({ onContinue, onBack, versionId, active
 
   useEffect(() => {
     const img = new Image()
-    img.src = version.bg
+    img.src = asset(version.bg)
     const markReady = () => setReady(true)
     if (img.complete) markReady()
     else img.onload = markReady
@@ -87,7 +88,7 @@ export default function InvitationScreen({ onContinue, onBack, versionId, active
       data-id={version.id}
     >
       <div className="invite__stage">
-        <div className="invite__bg" style={{ backgroundImage: `url("${version.bg}")` }} />
+        <div className="invite__bg" style={{ backgroundImage: `url("${asset(version.bg)}")` }} />
 
         <div key={version.id} className="invite__copy">
           <div className="invite__intro">

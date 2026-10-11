@@ -2,8 +2,10 @@ import { useEffect, useRef, useState } from 'react'
 import GoldDust from '../components/GoldDust.jsx'
 import './CoverScreen.css'
 
-const BG_SRC = '/images/page-02.webp'
-const COUPLE_SRC = '/images/couple.webp'
+import { asset } from '../data/artwork.js'
+
+const BG_SRC = asset('/images/page-02.webp')
+const COUPLE_SRC = asset('/images/couple.webp')
 
 export default function CoverScreen({ onOpen, onBack, active = true }) {
   const [ready, setReady] = useState(false)

@@ -102,6 +102,8 @@ export default function FamiliesScreen({ onContinue, onBack, active = true }) {
       <div className="families__bg" style={{ backgroundImage: `url("${BG_SRC}")` }} />
 
       <div className="families__layer">
+        <p className="families__kicker">With best compliments from</p>
+        <h1 className="families__title">Friends &amp; Families</h1>
         <div className="families__panel">
           <ol className="families__names">
             {NAMES.map((name) => (

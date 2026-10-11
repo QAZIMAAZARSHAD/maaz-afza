@@ -321,13 +321,22 @@
   animation: fade-in 1.1s ease 1.55s both;
 }
 
-/* Families: each group of names on its own */
-.families.is-ready .families__group {
-  animation: fade-in 1.15s ease both;
+/* Families: heading, then names, then the notes */
+.families.is-ready .families__kicker {
+  animation: fade-in 1.2s ease 0.2s both;
 }
-.families.is-ready .families__group:nth-child(1) { animation-delay: 0.35s; }
-.families.is-ready .families__group:nth-child(2) { animation-delay: 0.75s; }
-.families.is-ready .families__group:nth-child(3) { animation-delay: 1.15s; }
+.families.is-ready .families__title {
+  animation: bloom-in 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+.families.is-ready .families__names {
+  animation: fade-in 1.35s ease 0.9s both;
+}
+.families.is-ready .families__rule {
+  animation: fade-in 1.1s ease 1.2s both;
+}
+.families.is-ready .families__notes {
+  animation: fade-in 1.3s ease 1.4s both;
+}
 
 /* RSVP: the form settles field by field */
 .rsvp.is-ready .rsvp__form > * {

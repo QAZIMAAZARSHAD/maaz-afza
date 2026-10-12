@@ -115,7 +115,7 @@ export default function ReceptionDetailsScreen({ onContinue, onBack, active = tr
           </svg>
         </div>
         <p className="feast__meal">Dinner</p>
-        <p className="feast__time">8:00{'\u00a0'}PM</p>
+        <p className="feast__time">7:00{'\u00a0'}PM</p>
 
         <div className="feast__mark feast__mark--pin" aria-hidden="true">
           <svg viewBox="0 0 88 64">

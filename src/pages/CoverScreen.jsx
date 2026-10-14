@@ -6,9 +6,12 @@ import { asset } from '../data/artwork.js'
 
 const BG_SRC = asset('/images/page-02.webp')
 const COUPLE_SRC = asset('/images/couple.webp')
+/** Couple fade-in delay (1.65s) + duration (3.4s) from CoverScreen.css */
+const COUPLE_READY_MS = 5050
 
 export default function CoverScreen({ onOpen, onBack, active = true }) {
   const [ready, setReady] = useState(false)
+  const [showAdvance, setShowAdvance] = useState(false)
   const [leaving, setLeaving] = useState(false)
   const leavingRef = useRef(false)
   const sectionRef = useRef(null)
@@ -21,6 +24,16 @@ export default function CoverScreen({ onOpen, onBack, active = true }) {
     if (img.complete) markReady()
     else img.onload = markReady
   }, [])
+
+  useEffect(() => {
+    if (!ready || !active) {
+      setShowAdvance(false)
+      return undefined
+    }
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const timer = window.setTimeout(() => setShowAdvance(true), reduced ? 0 : COUPLE_READY_MS)
+    return () => window.clearTimeout(timer)
+  }, [ready, active])
 
   function leaveTo(next) {
     if (leavingRef.current) return
@@ -101,6 +114,12 @@ export default function CoverScreen({ onOpen, onBack, active = true }) {
         <div className="cover__wash" />
         <img className="cover__couple" src={COUPLE_SRC} alt="" />
       </div>
+
+      {showAdvance && (
+        <button className="cover__advance" type="button" onClick={handleOpen} aria-label="Next page">
+          <i />
+        </button>
+      )}
 
       <div className="cover__glow cover__glow--left" />
       <div className="cover__glow cover__glow--right" />

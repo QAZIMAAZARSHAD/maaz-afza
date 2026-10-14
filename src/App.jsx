@@ -18,12 +18,16 @@ import { journeyFromPath } from './data/journeys.js'
 import { ARTWORK, asset, imagesForPage, preloadImages } from './data/artwork.js'
 import './motion.css'
 
+const INTERACTIVE_SEL =
+  'a, button, input, textarea, select, label, [role="button"], [contenteditable="true"]'
+
 export default function App() {
   const journey = journeyFromPath()
   const [page, setPage] = useState(journey.pages[0])
   const [outgoing, setOutgoing] = useState(null)
   const fadeTimer = useRef(0)
   const musicRef = useRef(null)
+  const stageRef = useRef(null)
 
   useEffect(() => () => window.clearTimeout(fadeTimer.current), [])
 
@@ -70,6 +74,30 @@ export default function App() {
     window.clearTimeout(fadeTimer.current)
     fadeTimer.current = window.setTimeout(() => setOutgoing(null), 1300)
   }
+
+  const pageIndex = journey.pages.indexOf(page)
+  const canAdvance =
+    page !== 'opening' && pageIndex >= 0 && pageIndex < journey.pages.length - 1
+
+  useEffect(() => {
+    if (!canAdvance) return undefined
+    const timer = window.setTimeout(() => go(page, 1), 15000)
+    return () => window.clearTimeout(timer)
+  }, [page, canAdvance])
+
+  useEffect(() => {
+    if (!canAdvance) return undefined
+    const stage = stageRef.current
+    if (!stage) return undefined
+
+    const onClick = (event) => {
+      if (event.target.closest(INTERACTIVE_SEL)) return
+      go(page, 1)
+    }
+
+    stage.addEventListener('click', onClick)
+    return () => stage.removeEventListener('click', onClick)
+  }, [page, canAdvance])
 
   function renderPage(id, active) {
     if (id === 'opening') {
@@ -215,7 +243,7 @@ export default function App() {
     <div className="app-shell" data-page={page} data-version={journey.id}>
       <div className="app-shell__ambient" aria-hidden="true" />
       <audio ref={musicRef} src={asset('/audio/song.m4a')} loop preload="none" />
-      <main className="phone-stage">
+      <main className="phone-stage" ref={stageRef}>
         {shown.map((id) => (
           <div
             key={id}
